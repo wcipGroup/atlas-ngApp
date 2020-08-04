@@ -1,0 +1,44 @@
+.mat-grid-tile-custom {
+  background: lightblue;
+}
+.title-custom {
+  font-weight: bold;
+  text-align: center;
+  margin: 30px;
+}
+.type-icon{
+  height: 120px;
+}
+.new-plant-button{
+  padding: 0;
+  border: none;
+  background: none;
+}
+.mat-cell{
+  justify-content: center;
+}
+.table-header{
+  justify-content: center;
+}
+.selected-type{
+  outline: solid 8px #99c75e;
+}
+.table-header{
+  font-size: small;
+  font-weight: bold;
+}
+::ng-deep .mat-drawer-content{
+  background: white;
+}
+.action-button{
+  border-radius: 50px;
+  background: #616318;
+  color: white;
+  font-weight: bold;
+}
+.viewMore-button{
+  border-radius: 50px;
+  background: #99C75E;
+  color: white;
+  font-weight: bold;
+}

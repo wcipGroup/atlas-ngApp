@@ -1,0 +1,65 @@
+@import '../../../node_modules/@angular/material/prebuilt-themes/deeppurple-amber.css';
+.mat-toolbar.mat-primary {
+  background: #F3F2F2;
+  color: black;
+}
+.mat-toolbar-custom {
+  background-color: #F3F2F2 !important;
+}
+.name-logo {
+  vertical-align: super;
+  font-weight: bold;
+}
+.tree-logo {
+  height: 40px;
+  vertical-align: sub;
+  position: relative;
+  left: 10px;
+}
+//.mat-list-item-content{
+//  height: auto;
+//  background-color: #AEADAD;
+//}
+
+.sidenav-container {
+  height: 100%;
+}
+
+.sidenav {
+  width: 200px;
+}
+
+.sidenav .mat-toolbar {
+  background: inherit;
+}
+
+.mat-toolbar.mat-primary {
+  position: sticky;
+  top: 0;
+  z-index: 1;
+}
+::ng-deep .mat-drawer-inner-container {
+  background-color: #D6D5D5;;
+}
+.some-custom{
+  background-color: #AEADAD;
+  //padding: 5px 16px !important;
+  margin-top: 5px;
+  height: 60px !important;
+  //margin-bottom: 10px;
+  //box-sizing: content-box !important;
+  //margin-left: -20px;
+}
+.menu-logo{
+  height: 40px;
+}
+.name-menu{
+  color: #f8f9fa;
+  font-weight: bold;
+  font-size: larger;
+  margin-left: 5px;
+}
+[mat-menu-item].is-active,
+[mat-list-item].is-active {
+  background: #99C75E !important;
+}

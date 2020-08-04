@@ -1,0 +1,57 @@
+<div class="container">
+  <div class="row first-row-custom">
+    <div class="col-sm-4 btn-back-col">
+      <button (click)="onBack()" class="btn-back-custom">
+        <mat-icon class="arrow-back">keyboard_backspace</mat-icon>
+      </button>
+    </div>
+    <div class="col-sm-4">
+      <div >
+        <h4 class="plant-name-custom">{{this.plant.name}}</h4>
+      </div>
+    </div>
+  </div>
+<!--  subtitle -->
+  <div class="row">
+    <div class="col sub-name-custom">
+      <div class="sub-name">Manual Actions</div>
+    </div>
+  </div>
+<!-- action commands -->
+  <div class="row">
+    <div class="col water-btn">
+      <button (click)="onPump()" class="action-button">
+        <div>
+          <span class="action-name">Water plant</span>
+        </div>
+        <div>
+          <img class="action-img " src="../../assets/watering-btn.png">
+        </div>
+      </button>
+    </div>
+    <div class="col light-btn">
+      <button (click)="onLight()" class="action-button">
+        <div>
+          <span class="action-name">Turn on grow-lights</span>
+        </div>
+        <div>
+          <img class="action-img" src="../../assets/light-btn.png">
+        </div>
+      </button>
+    </div>
+  </div>
+
+  <div class="row">
+    <div class="col">
+      <button (click)="onDelete()" class="action-button">
+        <div>
+          <span class="action-name">Delete plant</span>
+        </div>
+        <div>
+<!--          <img class="action-img " src="../../assets/watering-btn.png">-->
+          <mat-icon class="action-img ">delete_outline</mat-icon>
+        </div>
+      </button>
+    </div>
+  </div>
+</div>

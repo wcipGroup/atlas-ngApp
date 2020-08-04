@@ -1,0 +1,60 @@
+<script src="https://cdn.jsdelivr.net/npm/chart.js@2.5.0"></script>
+<div class="container">
+  <div class="row first-row-custom">
+    <div class="col-sm-4 btn-back-col">
+      <button (click)="onBack()" class="btn-back-custom">
+        <mat-icon class="arrow-back">keyboard_backspace</mat-icon>
+      </button>
+    </div>
+    <div class="col-sm-4">
+      <div class="plant-name-custom">
+        {{this.plant.name}}
+      </div>
+    </div>
+  </div>
+
+  <!--  select period -->
+
+  <div class="container">
+    <div class="row">
+      <div class="col row-period-custom">
+        <button [class.selected-period]="this.selectedPeriod==='day'"  (click)="onDay()" class="btn-period-custom">
+          <span class="arrow-back">Last 24 Hours</span>
+        </button>
+        <button [disabled]="true" [class.selected-period]="this.selectedPeriod==='week'"  (click)="onWeek()" class="btn-period-custom">
+          <span class="arrow-back">Last 7 Days</span>
+        </button>
+        <button [disabled]="true" [class.selected-period]="this.selectedPeriod==='month'"  (click)="onMonth()" class="btn-period-custom">
+          <span class="arrow-back">Last 30 Days</span>
+        </button>
+      </div>
+    </div>
+  </div>
+
+  <!-- charts -->
+  <div class="container">
+    <div class="row">
+      <div class="col">
+        <span class="chart-label">SOIL MOISTURE</span>
+        <canvas id="soil-moisture"></canvas>
+      </div>
+      <div class="col">
+        <span class="chart-label">ILLUMINANCE</span>
+        <canvas id="illuminance"></canvas>
+      </div>
+    </div>
+    <div class="row">
+      <div class="col">
+        <span class="chart-label">TEMPERATURE</span>
+        <canvas id="temperature"></canvas>
+      </div>
+      <div class="col">
+        <span class="chart-label">HUMIDITY</span>
+        <canvas id="humidity"></canvas>
+      </div>
+    </div>
+  </div>
+
+
+</div>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/Chart.js/2.5.0/Chart.min.js"></script>

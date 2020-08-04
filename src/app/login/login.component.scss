@@ -1,0 +1,42 @@
+.body-custom {
+  background-image: url("../../assets/background.png");
+  background-size: contain;
+  background-repeat: no-repeat;
+  background-position: bottom;
+  height: 100%;
+  //margin-right: 200px;
+  //background: #99C75E !important;
+}
+.login-title{
+  text-align: center;
+  padding-top: 50px;
+  font-weight: bold;
+  font-size: 1.7rem;
+}
+.login-form{
+  width: 40%;
+  margin-left: auto;
+  margin-right: auto;
+  margin-top: 40px;
+  font-weight: bold;
+  font-size: small;
+}
+.name-logo {
+  font-weight: bold;
+}
+.tree-logo {
+  height: 40px;
+  vertical-align: sub;
+  position: relative;
+  left: 10px;
+}
+.btn-group{
+  display: flex;
+  justify-content: center;
+}
+.btn-custom{
+  width: 100%;
+  background: black;
+  border: none;
+  margin-top: 15px;
+}

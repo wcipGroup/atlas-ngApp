@@ -1,0 +1,36 @@
+<h4 class="title-custom">Αξιολόγηση ανοιχτών δεδομένων καιρού</h4>
+
+<div class="source-select-container">
+    <ng-select [items]="sources"
+               bindLabel="name"
+               placeholder="Επιλέξτε πηγή ανοιχτών δεδομένων καιρού"
+               [(ngModel)]="selectedSource"
+               class="api-select"
+    >
+    </ng-select>
+    <button [disabled]="!selectedSource" (click)="getData()" class="api-get-btn">
+        Λήψη κατάστασης καιρού
+    </button>
+</div>
+
+<div *ngIf="showReview" class="result-container">
+    <div class="grid-item-a">Τρέχουσα κατάσταση καιρού</div>
+    <div class="grid-item-c">
+        <div>θερμοκρασία : {{temp}}</div>
+        <div>Ατμοσφαιρική πίεση : {{pressure}}</div>
+        <div>Σχετική υγρασία : {{humidity}}</div>
+        <div>Αίσθητή θερμοκρασία : {{feels_like}}</div>
+    </div>
+    <div class="grid-item-b">
+        <img src="{{icon}}" width="100">
+    </div>
+    <div class="grid-item-d">Παρακαλώ αξιολογήστε τα παραπάνω δεδομένα</div>
+    <div class="grid-item-e">
+        <ngb-rating [(rate)]="rate"></ngb-rating>
+        <hr>
+        <pre>Βαθμός: <b>{{rate}} / 5</b></pre>
+    </div>
+    <button (click)="sendRates()" class="api-get-btn grid-item-f">
+        Αποστολή αξιολόγησης
+    </button>
+</div>

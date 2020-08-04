@@ -1,0 +1,18 @@
+
+<div *ngIf="this.currentUser; then thenBlock else elseBlock"></div>
+
+<ng-template #thenBlock>
+    <app-main-nav>
+        <div class="container">
+          <router-outlet></router-outlet>
+        </div>
+    </app-main-nav>
+</ng-template>
+
+
+<ng-template #elseBlock>
+  <div class="container-custom">
+  <app-login></app-login>
+  </div>
+</ng-template>
+

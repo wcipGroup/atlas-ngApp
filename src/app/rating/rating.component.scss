@@ -1,0 +1,82 @@
+.title-custom {
+  font-weight: bold;
+  text-align: center;
+  margin: 30px;
+}
+
+.api-select{
+}
+
+.api-get-btn{
+  margin-top: 25px;
+  border-radius: 25px;
+}
+
+.source-select-container{
+  text-align: center;
+  max-width: 30%;
+  margin: auto;
+}
+
+.result-container{
+  max-width: 50%;
+  margin: auto;
+  text-align: center;
+  display: grid;
+  grid-template-columns: auto auto;
+  grid-template-rows: auto;
+  grid-template-areas:
+          "header header"
+          "icon details"
+          "review rate"
+          "btn btn";
+}
+
+.grid-item-a {
+  grid-area: header;
+  margin: 50px;
+}
+.grid-item-b {
+  grid-area: icon;
+}
+.grid-item-c {
+  grid-area: details;
+  text-align: start;
+}
+.grid-item-d {
+  grid-area: review;
+  margin: 30px;
+}
+
+.grid-item-e{
+  grid-area: rate;
+}
+
+.grid-item-f{
+  grid-area: btn;
+  max-width: 300px;
+  margin: auto auto 40px;
+}
+
+@media only screen and (max-width: 780px) {
+  .source-select-container {
+    max-width: none;
+  }
+  .result-container{
+    max-width: none;
+    grid-template-areas:
+          "header"
+          "icon"
+          "details"
+          "review"
+          "rate"
+          "btn";
+    grid-template-columns: auto;
+  }
+  .grid-item-c{
+    text-align: center;
+  }
+  .grid-item-a{
+    margin-top: 30px;
+  }
+}
