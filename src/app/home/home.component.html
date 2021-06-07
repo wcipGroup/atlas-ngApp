@@ -1,1 +1,98 @@
-<h4 class="title-custom">ATLAS home screen</h4>
+<h4 class="title-custom">Επισκόπηση</h4>
+
+<table *ngIf="devices.length" mat-table [dataSource]="allStatus" class="mat-elevation-z8 tableFW">
+    <ng-container matColumnDef="devName">
+        <th mat-header-cell *matHeaderCellDef> Όνομα </th>
+        <td mat-cell *matCellDef="let element"> {{element.devName}} </td>
+    </ng-container>
+    <ng-container matColumnDef="devAddr">
+        <th mat-header-cell *matHeaderCellDef> Αναγνωριστικό </th>
+        <td mat-cell *matCellDef="let element"> {{element.devAddr}} </td>
+    </ng-container>
+    <ng-container matColumnDef="temperature">
+        <th mat-header-cell *matHeaderCellDef> Θερμοκρασία </th>
+        <td mat-cell *matCellDef="let element"> {{element.temperature}} </td>
+    </ng-container>
+    <ng-container matColumnDef="ph">
+        <th mat-header-cell *matHeaderCellDef> PH </th>
+        <td mat-cell *matCellDef="let element"> {{element.ph}} </td>
+    </ng-container>
+    <ng-container matColumnDef="do">
+        <th mat-header-cell *matHeaderCellDef> Διαλυμένο οξυγόνο </th>
+        <td mat-cell *matCellDef="let element"> {{element.do}} </td>
+    </ng-container>
+    <ng-container matColumnDef="conductivity">
+        <th mat-header-cell *matHeaderCellDef> Αγωγιμότητα </th>
+        <td mat-cell *matCellDef="let element"> {{element.conductivity}} </td>
+    </ng-container>
+    <ng-container matColumnDef="date">
+        <th mat-header-cell *matHeaderCellDef> Ώρα </th>
+        <td mat-cell *matCellDef="let element">
+            <div *ngIf="element.date"> {{element.date | date:'d/M/yy h:mm a'}}</div>
+            <div *ngIf="!element.date"> Ποτέ </div>
+        </td>
+    </ng-container>
+    <tr mat-header-row *matHeaderRowDef="displayedColumns"></tr>
+    <tr mat-row *matRowDef="let row; columns: displayedColumns;"></tr>
+</table>
+
+
+<div class="container">
+    <h4 class="title-custom">Ενέργειες</h4>
+    <div class="row" style="margin-top: 50px;">
+        <div class="col water-btn">
+            <button (click)="onActionBtn('feeder', 10)" class="action-button">
+                <div>
+                  <span class="action-name">Τάισμα ψαριών</span>
+                </div>
+              </button>
+        </div>
+        <div class="col water-btn">
+            <button (click)="onActionBtn('alarm', 10)" class="action-button">
+                <div>
+                  <span class="action-name">Σειρήνα</span>
+                </div>
+              </button>
+        </div>
+    </div>
+    <div class="row" style="margin-top: 50px;">
+        <div class="col water-btn">
+            <button (click)="onActionBtn('oxygen', 10)" class="action-button">
+              <div>
+                <span class="action-name">Αντλία οξυγόνου</span>
+              </div>
+            </button>
+        </div>
+        <div class="col water-btn">
+            <button (click)="onActionBtn('coldWater', 10)" class="action-button">
+              <div>
+                <span class="action-name">Αντλία κρύου νερού</span>
+              </div>
+            </button>
+        </div>
+        <div class="col water-btn">
+            <button (click)="onActionBtn('hotWater', 10)" class="action-button">
+              <div>
+                <span class="action-name">Αντλία ζεστού νερού</span>
+              </div>
+            </button>
+        </div>
+    </div>
+    <div class="row" style="margin-top: 50px;">
+        <div class="col water-btn">
+            <button (click)="onActionBtn('acid', 10)" class="action-button">
+              <div>
+                <span class="action-name">Δεξαμενή Οξύ</span>
+              </div>
+            </button>
+        </div>
+        <div class="col water-btn">
+            <button (click)="onActionBtn('base', 10)" class="action-button">
+              <div>
+                <span class="action-name">Δεξαμενή Βάση</span>
+              </div>
+            </button>
+        </div>
+    </div>
+</div>
+
