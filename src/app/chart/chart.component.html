@@ -1,1 +1,40 @@
-<h4 class="title-custom">Charts with sensors data</h4>
+<h4 class="title-custom">Δεδομένα αισθητήρων</h4>
+
+<div class="container">
+    <div class="row">
+        <div class="col" style="align-items: center;">
+            <ng-select [items]="devices"
+            bindLabel="devName"
+            appendTo="body"
+            placeholder="Επιλέξτε συσκευή"
+            [(ngModel)]="device"
+            class="api-select"
+            (change)="devSelected($event)"
+            ></ng-select>
+        </div>
+    </div>
+</div>
+
+<div class="container" style="text-align: center; font-weight: bold;">
+    <div class="row">
+        <div class="col">
+            <span *ngIf="device_data.length" class="chart-label">Θερμοκρασία</span>
+            <canvas id="temperature"></canvas>
+        </div>
+        <div class="col">
+            <span *ngIf="device_data.length" class="chart-label">PH</span>
+            <canvas id="ph"></canvas>
+        </div>
+    </div>
+    <div class="row">
+        <div class="col">
+            <span *ngIf="device_data.length" class="chart-label">Διαλυμένο οξυγόνο</span>
+            <canvas id="do"></canvas>
+        </div>
+        <div class="col">
+            <span *ngIf="device_data.length" class="chart-label">Αγωγιμότητα</span>
+            <canvas id="conductivity"></canvas>
+        </div>
+    </div>
+    
+</div>

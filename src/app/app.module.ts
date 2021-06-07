@@ -16,6 +16,8 @@ import { ConfigurationComponent } from './configuration';
 import { RatingComponent } from "./rating";
 import { NotificationComponent } from "./notification";
 import { ProfileComponent } from "./profile";
+import { NewApplicationDialog } from './profile/add-application/add-application.component'
+import { NewDeviceDialog } from './profile/add-device/add-device.component'
 import { ChartComponent } from "./chart";
 
 import { MDBBootstrapModule } from 'angular-bootstrap-md';
@@ -31,6 +33,10 @@ import { MatListModule } from '@angular/material/list';
 import {MatCardModule} from '@angular/material/card';
 import {MatGridListModule} from '@angular/material/grid-list';
 import {MatTableModule} from '@angular/material/table';
+import {MatTabsModule} from '@angular/material/tabs';
+import {MatDialogModule} from '@angular/material/dialog';
+import {MatFormFieldModule} from '@angular/material/form-field';
+import {MatInputModule} from '@angular/material/input';
 import { ChartsModule} from 'ng2-charts';
 import {NgSelectModule} from "@ng-select/ng-select";
 import {NgbRatingModule} from "@ng-bootstrap/ng-bootstrap";
@@ -48,6 +54,8 @@ import {NgbRatingModule} from "@ng-bootstrap/ng-bootstrap";
     RatingComponent,
     NotificationComponent,
     ProfileComponent,
+    NewApplicationDialog,
+    NewDeviceDialog,
     ChartComponent
   ],
     imports: [
@@ -67,12 +75,17 @@ import {NgbRatingModule} from "@ng-bootstrap/ng-bootstrap";
         MatCardModule,
         MatGridListModule,
         MatTableModule,
+        MatTabsModule,
+        MatDialogModule,
+        MatFormFieldModule,
+        MatInputModule,
         ChartsModule,
         NgSelectModule,
         NgbRatingModule
     ],
   providers: [
   ],
-  bootstrap: [AppComponent]
+  bootstrap: [AppComponent],
+  entryComponents: [NewApplicationDialog, NewDeviceDialog]
 })
 export class AppModule { }
