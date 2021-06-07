@@ -1,1 +1,77 @@
-<h4 class="title-custom">Profile</h4>
+<h4 class="title-custom">Προφίλ</h4>
+
+<mat-tab-group dynamicHeight>
+    <mat-tab label="Διαχείριση συσκευών">
+        <div class="container fitt">
+            <div class="row" style="text-align: center; margin: 20px 0">
+                <div class="col" style="align-items: center;">
+                    <ng-select [items]="applications"
+                    bindLabel="appName"
+                    appendTo="body"
+                    placeholder="Επιλέξτε εφαρμογή"
+                    [(ngModel)]="application"
+                    class="api-select"
+                    (change)="appSelected($event)"
+                    ></ng-select>
+                </div>
+                <div class="col">
+                    Προσθήκη Εφαρμογής
+                    <button mat-mini-fab color="primary" (click)="addApplication()">
+                        <mat-icon>add</mat-icon>
+                    </button>
+                </div>
+            </div>
+        </div>
+        <div *ngIf="showDevices">
+            <div class="container">
+                <div class="row">
+                    <div class="col">
+                        Συσκευές
+                    </div>
+                    <div class="col">
+                        Προσθήκη Συκευής
+                        <button mat-mini-fab color="primary" (click)="addDevice()">
+                            <mat-icon>add</mat-icon>
+                        </button>
+                    </div>
+                    <div class="col-sm-2">
+                        <button mat-mini-fab color="primary" (click)="appSelected(application)">
+                            <mat-icon>refresh</mat-icon>
+                        </button>
+                    </div>
+                </div>
+            </div>
+            <table *ngIf="devices.length" mat-table [dataSource]="devices" class="mat-elevation-z8 tableFW">
+                <ng-container matColumnDef="devName">
+                    <th mat-header-cell *matHeaderCellDef> Όνομα </th>
+                    <td mat-cell *matCellDef="let element"> {{element.devName}} </td>
+                </ng-container>
+                <ng-container matColumnDef="devAddr">
+                    <th mat-header-cell *matHeaderCellDef> Αναγνωριστικό </th>
+                    <td mat-cell *matCellDef="let element"> {{element.devAddr}} </td>
+                </ng-container>
+                <ng-container matColumnDef="lastSeen">
+                    <th mat-header-cell *matHeaderCellDef> Τελευταία εμφάνιση </th>
+                    <td mat-cell *matCellDef="let element">
+                        <div *ngIf="element.lastSeen"> {{element.lastSeen}} </div>
+                        <div *ngIf="!element.lastSeen"> Ποτέ </div>
+                    </td>
+                </ng-container>
+                <tr mat-header-row *matHeaderRowDef="displayedColumns"></tr>
+                <tr mat-row *matRowDef="let row; columns: displayedColumns;"></tr>
+            </table>
+            <p *ngIf="!devices.length" class="device-text">Δεν ανήκουν συσκευές σε αυτή την εφαρμογή</p>
+        </div>
+        <div>
+            προσθήκη ενεργοποιητή -> σύνδεση με συσκευή + αριθμό ενεργοποιητή. ο αριθμός θα κάνει map τοπικά στην συσκευή
+            ώστε να μπορεί να το χειριστεί από εκεί. Επίσης θα δίνεται η δυνατότητα raw downlink σε κάθε συσκευή με 
+            αριθμό ενεργοποιητή + command. 
+        </div>
+    </mat-tab>
+    <mat-tab label="Διαχείριση προφίλ">
+        <div>
+            Αλλαγή κωδικού
+        </div>
+    </mat-tab>
+</mat-tab-group>
+

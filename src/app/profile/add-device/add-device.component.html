@@ -1,0 +1,19 @@
+<h1 mat-dialog-title>Προσθήκη νέας συσευής</h1>
+<div mat-dialog-content>
+  <p>Επιθυμητό όνομα συσκευής</p>
+  <mat-form-field>
+    <mat-label>Όνομα</mat-label>
+    <input matInput [(ngModel)]="data.devName">
+  </mat-form-field>
+</div>
+<div mat-dialog-content>
+    <p>Το μοναδικό αναγνωριστικό συσευής</p>
+    <mat-form-field>
+      <mat-label>Αναγνωριστικό</mat-label>
+      <input matInput [(ngModel)]="data.devAddr">
+    </mat-form-field>
+  </div>
+<div mat-dialog-actions>
+  <button mat-button (click)="onNoClick()" style="margin: auto;">Ακύρωση</button>
+  <button mat-button [mat-dialog-close]="data" cdkFocusInitial style="margin: auto;">Καταχώρηση</button>
+</div>
