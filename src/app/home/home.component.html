@@ -39,16 +39,28 @@
 
 <div class="container">
     <h4 class="title-custom">Ενέργειες</h4>
+    <div class="row">
+      <div class="col">
+        <div mat-dialog-content>
+          <p>Χρόνος εκτελεσης ενεργειας σε δευτερόλεπτα</p>
+          <mat-form-field>
+            <mat-label>Δευτερόλεπτα (s)</mat-label>
+            <input type="number" matInput [(ngModel)]="actionTime" [formControl]="actionTimeField" required>
+            <mat-error *ngIf="actionTimeField.invalid">Ο χρόνος ενέργειας είναι υποχρεωτικός</mat-error>
+          </mat-form-field>
+        </div>
+      </div>
+    </div>
     <div class="row" style="margin-top: 50px;">
         <div class="col water-btn">
-            <button (click)="onActionBtn('feeder', 10)" class="action-button">
+            <button (click)="onActionBtn('feeder', actionTime)" class="action-button">
                 <div>
                   <span class="action-name">Τάισμα ψαριών</span>
                 </div>
               </button>
         </div>
         <div class="col water-btn">
-            <button (click)="onActionBtn('alarm', 10)" class="action-button">
+            <button (click)="onActionBtn('alarm', actionTime)" class="action-button">
                 <div>
                   <span class="action-name">Σειρήνα</span>
                 </div>
@@ -57,21 +69,21 @@
     </div>
     <div class="row" style="margin-top: 50px;">
         <div class="col water-btn">
-            <button (click)="onActionBtn('oxygen', 10)" class="action-button">
+            <button (click)="onActionBtn('oxygen', actionTime)" class="action-button">
               <div>
                 <span class="action-name">Αντλία οξυγόνου</span>
               </div>
             </button>
         </div>
         <div class="col water-btn">
-            <button (click)="onActionBtn('coldWater', 10)" class="action-button">
+            <button (click)="onActionBtn('coldWater', actionTime)" class="action-button">
               <div>
                 <span class="action-name">Αντλία κρύου νερού</span>
               </div>
             </button>
         </div>
         <div class="col water-btn">
-            <button (click)="onActionBtn('hotWater', 10)" class="action-button">
+            <button (click)="onActionBtn('hotWater', actionTime)" class="action-button">
               <div>
                 <span class="action-name">Αντλία ζεστού νερού</span>
               </div>
@@ -80,14 +92,14 @@
     </div>
     <div class="row" style="margin-top: 50px;">
         <div class="col water-btn">
-            <button (click)="onActionBtn('acid', 10)" class="action-button">
+            <button (click)="onActionBtn('acid', actionTime)" class="action-button">
               <div>
                 <span class="action-name">Δεξαμενή Οξύ</span>
               </div>
             </button>
         </div>
         <div class="col water-btn">
-            <button (click)="onActionBtn('base', 10)" class="action-button">
+            <button (click)="onActionBtn('base', actionTime)" class="action-button">
               <div>
                 <span class="action-name">Δεξαμενή Βάση</span>
               </div>

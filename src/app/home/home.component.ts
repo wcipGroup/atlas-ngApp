@@ -3,6 +3,7 @@ import {Router} from '@angular/router';
 import { environment } from '../../environments/environment';
 import { HttpClient, HttpHeaders } from '@angular/common/http';
 import {deviceStatus} from './status'
+import {FormControl, Validators} from '@angular/forms';
 
 
 @Component({
@@ -16,9 +17,12 @@ export class HomeComponent implements OnInit{
   devices = [];
   allStatus: deviceStatus[] = []
   displayedColumns = ['devName', 'devAddr', 'temperature', 'ph', 'do', 'conductivity', 'date']
+  actionTime: 20;
+  actionTimeField = new FormControl('', [Validators.required]);
   constructor(private http:HttpClient){}
   ngOnInit(): void {
     this.currentUser = JSON.parse(localStorage.getItem('currentUser'))
+    this.actionTime = 20
     this.fetchDevices()
   }
 
@@ -50,7 +54,12 @@ export class HomeComponent implements OnInit{
     })
   }
   onActionBtn(actuator, time){
-    this.http.post<any>(`${environment.apiUrl}user-action/${this.currentUser.identity}`, {actuator, time}).subscribe(data => console.log(data), error => console.log(error))
+    if(this.actionTimeField.hasError("required")){return}
+    if (confirm("Ενεργοποίηση ενέργειας για " + time + " δευτερόλεπτα?")){
+      this.http.post<any>(`${environment.apiUrl}user-action/${this.currentUser.identity}`, {actuator, time})
+      .subscribe(data => console.log(data), error => console.log(error))
+    }
+    
   }
   onBaseTank(){
     console.log("base")
