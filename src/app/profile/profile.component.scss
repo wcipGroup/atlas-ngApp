@@ -21,3 +21,18 @@
   margin: revert;
   border: solid 5px #99c75e;
 }
+.container{
+  text-align: center;
+}
+.profileTab{
+  font-weight: bold;
+  margin-top: 30px;
+}
+
+.custom-radio-group {
+  display: flex; flex-direction: column;
+  align-items: center;
+  /* display: inline-grid; */ 
+  /* display: grid; */
+  margin: 15px 0;
+}

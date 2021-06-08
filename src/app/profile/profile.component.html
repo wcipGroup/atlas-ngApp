@@ -69,8 +69,46 @@
         </div>
     </mat-tab>
     <mat-tab label="Διαχείριση προφίλ">
-        <div>
-            Αλλαγή κωδικού
+        <div class="container">
+            <div class="row" style="margin-top: 20px;">
+                <div class="col">
+                    <div mat-dialog-content class="row">
+                        <p class="col profileTab">Αλλαγή κωδικού</p>
+                        <mat-form-field class="col">
+                            <input matInput [(ngModel)]="newPass">
+                        </mat-form-field>
+                        <button mat-raised-button color="primary" (click)="setNewPass()">
+                            Αλλαγή Κωδικού
+                        </button>
+                    </div>
+                    
+                </div>
+            </div>
+            <div class="row">
+                <div class="col">
+                    <p class="col profileTab">Αυτόματες ενέργειες</p>
+                    <mat-radio-group class="custom-radio-group" [(ngModel)]="autoActions">
+                        <mat-radio-button [value]="true">Ναι</mat-radio-button>
+                        <mat-radio-button [value]="false">Όχι</mat-radio-button>
+                    </mat-radio-group>
+                </div>
+            </div>
+            <div class="row" *ngIf="autoActions==true">
+                <div class="col">
+                    <p class="col profileTab">Διάστημα αυτόματων ενεργειών</p>
+                    <mat-radio-group class="custom-radio-group" [(ngModel)]="autoActionsTimePeriod">
+                        <mat-radio-button [value]="true">8πμ - 2μμ</mat-radio-button>
+                        <mat-radio-button [value]="false">Συνεχόμενα</mat-radio-button>
+                    </mat-radio-group>
+                </div>
+            </div>
+            <div class="row">
+                <div class="col">
+                    <button mat-raised-button color="primary" (click)="setAutoActions()">
+                        Καταχώρηση επιλογής
+                    </button>
+                </div>
+            </div>
         </div>
     </mat-tab>
 </mat-tab-group>

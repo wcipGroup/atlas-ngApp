@@ -13,17 +13,41 @@ import {NewDeviceDialog} from './add-device/add-device.component'
 export class ProfileComponent implements OnInit{
     currentUser: any;
     applications = [];
+    profile
     application = undefined
     devices = [];
     showDevices = false;
     displayedColumns: string[] = ['devName', 'devAddr', 'lastSeen'];
+    newPass
+    autoActions
+    autoActionsTimePeriod
     constructor(private http: HttpClient, public dialog: MatDialog){}
     ngOnInit(): void {
         this.currentUser = JSON.parse(localStorage.getItem('currentUser'))
+        this.newPass = ""
+        this.autoActions = false
+        this.autoActionsTimePeriod = false
         this.fetchApplications()
-        
+        this.fetchProfile()
     }
 
+    fetchProfile(){
+        const headers = new HttpHeaders({
+            'Content-Type': 'application/json',
+            'Authorization': 'Bearer ' + JSON.parse(localStorage.getItem('currentUser'))["access_token"]
+        });
+        this.http.get<any>(`${environment.apiUrl}user-data/profile/${this.currentUser.identity}`, {headers})
+        .subscribe(
+            data => {
+                console.log("profile found: ", data)
+                this.autoActions = data["profile"]["autoActions"]
+                this.autoActionsTimePeriod = data["profile"]["autoActionsTimePeriod"]
+            },error => {
+                console.log("profile not found")
+                this.autoActions = false
+                this.autoActionsTimePeriod = false
+            })
+    }
 
     fetchApplications(){
         const headers = new HttpHeaders({
@@ -96,5 +120,49 @@ export class ProfileComponent implements OnInit{
             }, error =>{
                 console.log(error)
         })
+    }
+
+    setAutoActions(){
+        console.log("ενέργειες: ", this.autoActions)
+        console.log("περιοδος ενεργειών: ", this.autoActionsTimePeriod)
+        const headers = new HttpHeaders({
+            'Content-Type': 'application/json',
+            'Authorization': 'Bearer ' + JSON.parse(localStorage.getItem('currentUser'))["access_token"]
+        });
+        this.http.post<any>(`${environment.apiUrl}user-data/profile/${this.currentUser.identity}`, 
+        {"autoActions": this.autoActions, "autoActionsTimePeriod": this.autoActionsTimePeriod}, {headers})
+            .subscribe(
+                data => {
+                    console.log("data: ", data)
+                    alert('Η καταχώρηση της επιλογής πραγματοποιήθηκε επιτυχώς')
+                },
+                error => {
+                    console.log("error: ", error)
+                    alert('Υπήρξε κάποιο πρόβλημα. Παρακαλώ δοκιμάστε πάλι σε λίγα λεπτά');
+                }
+            );
+    }
+
+    setNewPass(){
+        if(confirm("Είστε σίγουροι για την αλλαγή κωδικού?")){
+            console.log("new pass: ", this.newPass)
+            
+            const headers = new HttpHeaders({
+                'Content-Type': 'application/json',
+                'Authorization': 'Bearer ' + JSON.parse(localStorage.getItem('currentUser'))["access_token"]
+            });
+            this.http.post<any>(`${environment.apiUrl}users/newPass/${this.currentUser.identity}`, {"password": this.newPass}, {headers})
+                .subscribe(
+                    data => {
+                        console.log("data: ", data)
+                        alert('Η αλλαγή κωδικού πραγματοποιήθηκε επιτυχώς')
+                    },
+                    error => {
+                        console.log("error: ", error)
+                        alert('Υπήρξε κάποιο πρόβλημα. Παρακαλώ δοκιμάστε πάλι σε λίγα λεπτά');
+                    }
+                );
+        }
+        this.newPass = ""
     }
 }
