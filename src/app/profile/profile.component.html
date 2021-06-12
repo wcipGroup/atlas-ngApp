@@ -1,5 +1,5 @@
 <h4 class="title-custom">Προφίλ</h4>
-
+<link href="https://fonts.googleapis.com/css?family=Material+Icons|Material+Icons+Outlined|Material+Icons+Two+Tone|Material+Icons+Round|Material+Icons+Sharp" rel="stylesheet">
 <mat-tab-group dynamicHeight>
     <mat-tab label="Διαχείριση συσκευών">
         <div class="container fitt">
@@ -55,6 +55,22 @@
                     <td mat-cell *matCellDef="let element">
                         <div *ngIf="element.lastSeen"> {{element.lastSeen}} </div>
                         <div *ngIf="!element.lastSeen"> Ποτέ </div>
+                    </td>
+                </ng-container>
+                <ng-container matColumnDef="interval">
+                    <th mat-header-cell *matHeaderCellDef> Περίοδος αποστολής</th>
+                    <td mat-cell *matCellDef="let element">
+                        <div *ngIf="element.interval"> {{element.interval}} λεπτά 
+                            <span class="material-icons-outlined edit-interval" (click)="changeInterval(element.devAddr)">
+                                edit
+                            </span>
+                        </div>
+                        <div *ngIf="!element.interval"> 30 λεπτά 
+                            <span class="material-icons-outlined edit-interval" (click)="changeInterval(element.devAddr)">
+                                edit
+                            </span>
+                        </div>
+                        
                     </td>
                 </ng-container>
                 <tr mat-header-row *matHeaderRowDef="displayedColumns"></tr>

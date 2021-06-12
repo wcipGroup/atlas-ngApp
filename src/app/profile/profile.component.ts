@@ -5,6 +5,7 @@ import { environment } from '../../environments/environment';
 import {MatDialog, MatDialogRef, MAT_DIALOG_DATA} from '@angular/material/dialog';
 import {NewApplicationDialog} from './add-application/add-application.component'
 import {NewDeviceDialog} from './add-device/add-device.component'
+import {ChangeIntervalDialog} from './change-interval/change-interval.component'
 
 @Component({
     templateUrl: './profile.component.html',
@@ -17,7 +18,7 @@ export class ProfileComponent implements OnInit{
     application = undefined
     devices = [];
     showDevices = false;
-    displayedColumns: string[] = ['devName', 'devAddr', 'lastSeen'];
+    displayedColumns: string[] = ['devName', 'devAddr', 'lastSeen', 'interval'];
     newPass
     autoActions
     autoActionsTimePeriod
@@ -81,6 +82,29 @@ export class ProfileComponent implements OnInit{
                 );
             }
         });
+    }
+    changeInterval(devAddr){
+        const dialogRef = this.dialog.open(ChangeIntervalDialog, {
+            width: '250px'
+        });
+        dialogRef.afterClosed().subscribe(result => {
+            if (result != undefined){
+                console.log(`new interval for ${devAddr}: ${result.interval}`)
+                const headers = new HttpHeaders({
+                    'Content-Type': 'application/json',
+                    'Authorization': 'Bearer ' + JSON.parse(localStorage.getItem('currentUser'))["access_token"]
+                });
+                this.http.post<any>(`${environment.apiUrl}user-data/${devAddr}/interval`, result, {headers})
+                .subscribe(
+                    data => {
+                        alert('Η συσκευή προστέθηκε επιτυχώς')
+                    },
+                    error => {
+                        alert('Υπήρξε κάποιο πρόβλημα. Παρακαλώ δοκιμάστε πάλι σε λίγα λεπτά');
+                    }
+                );
+            }
+        })
     }
     addDevice(){
         const dialogRef = this.dialog.open(NewDeviceDialog, {
