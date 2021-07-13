@@ -1,1 +1,10 @@
 <h4 class="title-custom">Notifications</h4>
+
+<table>
+    <tr *ngFor="let notification of notifications | slice: (page-1) * pageSize : page * pageSize">
+      <!-- content here -->
+    </tr>
+</table>
+
+<button type="button" class="btn btn-next" (click)="fetchPrepare(true)">Επόμενο</button>
+<button type="button" class="btn btn-pre" (click)="fetchPrepare(false)">Προηγούμενο</button>
