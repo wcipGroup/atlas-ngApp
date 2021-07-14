@@ -20,6 +20,7 @@ import { NewApplicationDialog } from './profile/add-application/add-application.
 import { NewDeviceDialog } from './profile/add-device/add-device.component'
 import { ChangeIntervalDialog } from './profile/change-interval/change-interval.component'
 import { ChartComponent } from "./chart";
+import { NotificationBodyDialog } from './notification/notification-body'
 
 import { MDBBootstrapModule } from 'angular-bootstrap-md';
 import { FormsModule } from '@angular/forms';
@@ -59,7 +60,8 @@ import {NgbRatingModule} from "@ng-bootstrap/ng-bootstrap";
     NewApplicationDialog,
     NewDeviceDialog,
     ChangeIntervalDialog,
-    ChartComponent
+    ChartComponent,
+    NotificationBodyDialog
   ],
     imports: [
         BrowserModule,
@@ -90,6 +92,6 @@ import {NgbRatingModule} from "@ng-bootstrap/ng-bootstrap";
   providers: [
   ],
   bootstrap: [AppComponent],
-  entryComponents: [NewApplicationDialog, NewDeviceDialog, ChangeIntervalDialog]
+  entryComponents: [NewApplicationDialog, NewDeviceDialog, ChangeIntervalDialog, NotificationBodyDialog]
 })
 export class AppModule { }
