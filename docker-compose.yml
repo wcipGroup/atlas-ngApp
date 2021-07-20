@@ -1,0 +1,17 @@
+version: '2'
+services:
+
+  ng-app:
+    build:
+      context: .
+      dockerfile: Dockerfile
+    container_name: atlas-ng-app
+    image: atlas-ng-app:latest
+    restart: always
+    ports:
+      - 80:80
+    networks:
+      - ng-app
+networks:
+  ng-app:
+    name: atlas-project-network
