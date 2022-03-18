@@ -7,3 +7,8 @@ export interface deviceStatus{
     conductivity: number
     date: Date
   }
+export interface gwStatus{
+    gwId: string
+    gwName: string
+    lastSeen: Date
+}

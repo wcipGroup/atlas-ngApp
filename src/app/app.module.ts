@@ -18,6 +18,8 @@ import { NotificationComponent } from "./notification";
 import { ProfileComponent } from "./profile";
 import { NewApplicationDialog } from './profile/add-application/add-application.component'
 import { NewDeviceDialog } from './profile/add-device/add-device.component'
+import { NewGatewayDialog } from "./profile/add-gateway/add-gateway.component";
+import { GwActionDialog } from "./home/gw-action/gw-action.component";
 import { ChangeIntervalDialog } from './profile/change-interval/change-interval.component'
 import { ChartComponent } from "./chart";
 import { NotificationBodyDialog } from './notification/notification-body'
@@ -39,6 +41,8 @@ import {MatTableModule} from '@angular/material/table';
 import {MatTabsModule} from '@angular/material/tabs';
 import {MatDialogModule} from '@angular/material/dialog';
 import {MatFormFieldModule} from '@angular/material/form-field';
+import {MatOptionModule} from "@angular/material/core";
+import {MatSelectModule} from "@angular/material/select";
 import {MatInputModule} from '@angular/material/input';
 import { ChartsModule} from 'ng2-charts';
 import {NgSelectModule} from "@ng-select/ng-select";
@@ -59,6 +63,8 @@ import {NgbRatingModule} from "@ng-bootstrap/ng-bootstrap";
     ProfileComponent,
     NewApplicationDialog,
     NewDeviceDialog,
+    NewGatewayDialog,
+    GwActionDialog,
     ChangeIntervalDialog,
     ChartComponent,
     NotificationBodyDialog
@@ -87,11 +93,13 @@ import {NgbRatingModule} from "@ng-bootstrap/ng-bootstrap";
         MatInputModule,
         ChartsModule,
         NgSelectModule,
-        NgbRatingModule
+        NgbRatingModule,
+        MatOptionModule,
+        MatSelectModule
     ],
   providers: [
   ],
   bootstrap: [AppComponent],
-  entryComponents: [NewApplicationDialog, NewDeviceDialog, ChangeIntervalDialog, NotificationBodyDialog]
+  entryComponents: [NewApplicationDialog, NewDeviceDialog, NewGatewayDialog,GwActionDialog, ChangeIntervalDialog, NotificationBodyDialog]
 })
 export class AppModule { }

@@ -11,7 +11,7 @@ import {MatDialog, MatDialogRef, MAT_DIALOG_DATA} from '@angular/material/dialog
     public data
     constructor(
       public dialogRef: MatDialogRef<NewApplicationDialog>) {
-          this.data = {"appName": "", "appId": "", "appKey": ""}
+          this.data = {"appName": "", "appKey": ""}
       }
   
     onNoClick(): void {

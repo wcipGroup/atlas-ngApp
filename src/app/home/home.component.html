@@ -1,110 +1,156 @@
 <h4 class="title-custom">Επισκόπηση</h4>
-
-<table *ngIf="devices.length" mat-table [dataSource]="allStatus" class="mat-elevation-z8 tableFW">
-    <ng-container matColumnDef="devName">
-        <th mat-header-cell *matHeaderCellDef> Όνομα </th>
-        <td mat-cell *matCellDef="let element"> {{element.devName}} </td>
-    </ng-container>
-    <ng-container matColumnDef="devAddr">
-        <th mat-header-cell *matHeaderCellDef> Αναγνωριστικό </th>
-        <td mat-cell *matCellDef="let element"> {{element.devAddr}} </td>
-    </ng-container>
-    <ng-container matColumnDef="temperature">
-        <th mat-header-cell *matHeaderCellDef> Θερμοκρασία </th>
-        <td mat-cell *matCellDef="let element"> {{element.temperature}} </td>
-    </ng-container>
-    <ng-container matColumnDef="ph">
-        <th mat-header-cell *matHeaderCellDef> PH </th>
-        <td mat-cell *matCellDef="let element"> {{element.ph}} </td>
-    </ng-container>
-    <ng-container matColumnDef="do">
-        <th mat-header-cell *matHeaderCellDef> Διαλυμένο οξυγόνο </th>
-        <td mat-cell *matCellDef="let element"> {{element.do}} </td>
-    </ng-container>
-    <ng-container matColumnDef="conductivity">
-        <th mat-header-cell *matHeaderCellDef> Αγωγιμότητα </th>
-        <td mat-cell *matCellDef="let element"> {{element.conductivity}} </td>
-    </ng-container>
-    <ng-container matColumnDef="date">
-        <th mat-header-cell *matHeaderCellDef> Ώρα </th>
-        <td mat-cell *matCellDef="let element">
-            <div *ngIf="element.date"> {{element.date | date:'d/M/yy h:mm a'}}</div>
-            <div *ngIf="!element.date"> Ποτέ </div>
-        </td>
-    </ng-container>
-    <tr mat-header-row *matHeaderRowDef="displayedColumns"></tr>
-    <tr mat-row *matRowDef="let row; columns: displayedColumns;"></tr>
-</table>
-
-
-<div class="container">
-    <h4 class="title-custom">Ενέργειες</h4>
-    <div class="row">
-      <div class="col">
-        <div mat-dialog-content>
-          <p>Χρόνος εκτελεσης ενεργειας σε δευτερόλεπτα</p>
-          <mat-form-field>
-            <mat-label>Δευτερόλεπτα (s)</mat-label>
-            <input type="number" matInput [(ngModel)]="actionTime" [formControl]="actionTimeField" required>
-            <mat-error *ngIf="actionTimeField.invalid">Ο χρόνος ενέργειας είναι υποχρεωτικός</mat-error>
-          </mat-form-field>
-        </div>
-      </div>
-    </div>
-    <div class="row" style="margin-top: 50px;">
-        <div class="col water-btn">
-            <button (click)="onActionBtn('feeder', actionTime)" class="action-button">
-                <div>
-                  <span class="action-name">Τάισμα ψαριών</span>
-                </div>
-              </button>
-        </div>
-        <div class="col water-btn">
-            <button (click)="onActionBtn('alarm', actionTime)" class="action-button">
-                <div>
-                  <span class="action-name">Σειρήνα</span>
-                </div>
-              </button>
-        </div>
-    </div>
-    <div class="row" style="margin-top: 50px;">
-        <div class="col water-btn">
-            <button (click)="onActionBtn('oxygen', actionTime)" class="action-button">
-              <div>
-                <span class="action-name">Αντλία οξυγόνου</span>
-              </div>
-            </button>
-        </div>
-        <div class="col water-btn">
-            <button (click)="onActionBtn('coldWater', actionTime)" class="action-button">
-              <div>
-                <span class="action-name">Αντλία κρύου νερού</span>
-              </div>
-            </button>
-        </div>
-        <div class="col water-btn">
-            <button (click)="onActionBtn('hotWater', actionTime)" class="action-button">
-              <div>
-                <span class="action-name">Αντλία ζεστού νερού</span>
-              </div>
-            </button>
-        </div>
-    </div>
-    <div class="row" style="margin-top: 50px;">
-        <div class="col water-btn">
-            <button (click)="onActionBtn('acid', actionTime)" class="action-button">
-              <div>
-                <span class="action-name">Δεξαμενή Οξύ</span>
-              </div>
-            </button>
-        </div>
-        <div class="col water-btn">
-            <button (click)="onActionBtn('base', actionTime)" class="action-button">
-              <div>
-                <span class="action-name">Δεξαμενή Βάση</span>
-              </div>
-            </button>
+<div class="container fitt">
+    <div class="row" style="text-align: center; margin: 20px 0">
+        <div class="col" style="align-items: center;">
+            <ng-select [items]="applications"
+                       bindLabel="appName"
+                       appendTo="body"
+                       placeholder="Επιλέξτε εφαρμογή"
+                       [(ngModel)]="selectedApplication"
+                       class="api-select"
+                       (change)="appSelected($event)"
+            ></ng-select>
         </div>
     </div>
 </div>
+<div class="container" *ngIf="showProperties">
+    <h4 class="title-custom">Συσκευές αισθητήρων</h4>
+    <table *ngIf="devices.length" mat-table [dataSource]="allStatus" class="mat-elevation-z8 tableFW">
+        <ng-container matColumnDef="devName">
+            <th mat-header-cell *matHeaderCellDef> Όνομα </th>
+            <td mat-cell *matCellDef="let element"> {{element.devName}} </td>
+        </ng-container>
+        <ng-container matColumnDef="devAddr">
+            <th mat-header-cell *matHeaderCellDef> Αναγνωριστικό </th>
+            <td mat-cell *matCellDef="let element"> {{element.devAddr}} </td>
+        </ng-container>
+        <ng-container matColumnDef="temperature">
+            <th mat-header-cell *matHeaderCellDef> Θερμοκρασία </th>
+            <td mat-cell *matCellDef="let element"> {{element.temperature}} </td>
+        </ng-container>
+        <ng-container matColumnDef="ph">
+            <th mat-header-cell *matHeaderCellDef> PH </th>
+            <td mat-cell *matCellDef="let element"> {{element.ph}} </td>
+        </ng-container>
+        <ng-container matColumnDef="do">
+            <th mat-header-cell *matHeaderCellDef> Διαλυμένο οξυγόνο </th>
+            <td mat-cell *matCellDef="let element"> {{element.do}} </td>
+        </ng-container>
+        <ng-container matColumnDef="conductivity">
+            <th mat-header-cell *matHeaderCellDef> Αγωγιμότητα </th>
+            <td mat-cell *matCellDef="let element"> {{element.conductivity}} </td>
+        </ng-container>
+        <ng-container matColumnDef="date">
+            <th mat-header-cell *matHeaderCellDef> Last Seen </th>
+            <td mat-cell *matCellDef="let element">
+                <div *ngIf="element.date"> {{element.date | date:'d/M/yy h:mm a'}}</div>
+                <div *ngIf="!element.date"> Ποτέ </div>
+            </td>
+        </ng-container>
+        <tr mat-header-row *matHeaderRowDef="displayedColumns"></tr>
+        <tr mat-row *matRowDef="let row; columns: displayedColumns;"></tr>
+    </table>
+    <p *ngIf="!devices.length" class="device-text">Δεν ανήκουν συσκευές σε αυτή την εφαρμογή</p>
 
+    <h4 class="title-custom">Κόμβοι ενεργειών</h4>
+    <table *ngIf="gateways.length" mat-table [dataSource]="gatewayStatus" class="mat-elevation-z8 tableFW">
+        <ng-container matColumnDef="gwName">
+            <th mat-header-cell *matHeaderCellDef> Όνομα </th>
+            <td mat-cell *matCellDef="let element"> {{element.gwName}} </td>
+        </ng-container>
+        <ng-container matColumnDef="gwId">
+            <th mat-header-cell *matHeaderCellDef> Αναγνωριστικό </th>
+            <td mat-cell *matCellDef="let element"> {{element.gwId}} </td>
+        </ng-container>
+        <ng-container matColumnDef="action">
+            <th mat-header-cell *matHeaderCellDef> Ενέργεια </th>
+            <td mat-cell *matCellDef="let element">
+                <button (click)="gwAction(element.gwId)" class="api-get-btn">
+                    Ενέργεια
+                </button>
+            </td>
+        </ng-container>
+        <ng-container matColumnDef="lastSeen">
+            <th mat-header-cell *matHeaderCellDef> Last Seen </th>
+            <td mat-cell *matCellDef="let element">
+                <div *ngIf="element.lastSeen"> {{element.lastSeen | date:'d/M/yy h:mm a'}}</div>
+                <div *ngIf="!element.lastSeen"> Ποτέ </div>
+            </td>
+        </ng-container>
+        <tr mat-header-row *matHeaderRowDef="gwDisplayedColumns"></tr>
+        <tr mat-row *matRowDef="let row; columns: gwDisplayedColumns;"></tr>
+    </table>
+    <p *ngIf="!gateways.length" class="device-text">Δεν ανήκουν κόμβοι ελέγχου σε αυτή την εφαρμογή</p>
+
+<!--    <div class="container">-->
+<!--        <h4 class="title-custom">Κόμβοι ενεργειών</h4>-->
+<!--        <div class="row">-->
+<!--          <div class="col">-->
+<!--            <div mat-dialog-content>-->
+<!--              <p>Χρόνος εκτελεσης ενεργειας σε δευτερόλεπτα</p>-->
+<!--              <mat-form-field>-->
+<!--                <mat-label>Δευτερόλεπτα (s)</mat-label>-->
+<!--                <input type="number" matInput [(ngModel)]="actionTime" [formControl]="actionTimeField" required>-->
+<!--                <mat-error *ngIf="actionTimeField.invalid">Ο χρόνος ενέργειας είναι υποχρεωτικός</mat-error>-->
+<!--              </mat-form-field>-->
+<!--            </div>-->
+<!--          </div>-->
+<!--        </div>-->
+<!--        <div class="row" style="margin-top: 50px;">-->
+<!--            <div class="col water-btn">-->
+<!--                <button (click)="onActionBtn('feeder', actionTime)" class="action-button">-->
+<!--                    <div>-->
+<!--                      <span class="action-name">Τάισμα ψαριών</span>-->
+<!--                    </div>-->
+<!--                  </button>-->
+<!--            </div>-->
+<!--            <div class="col water-btn">-->
+<!--                <button (click)="onActionBtn('alarm', actionTime)" class="action-button">-->
+<!--                    <div>-->
+<!--                      <span class="action-name">Σειρήνα</span>-->
+<!--                    </div>-->
+<!--                  </button>-->
+<!--            </div>-->
+<!--        </div>-->
+<!--        <div class="row" style="margin-top: 50px;">-->
+<!--            <div class="col water-btn">-->
+<!--                <button (click)="onActionBtn('oxygen', actionTime)" class="action-button">-->
+<!--                  <div>-->
+<!--                    <span class="action-name">Αντλία οξυγόνου</span>-->
+<!--                  </div>-->
+<!--                </button>-->
+<!--            </div>-->
+<!--            <div class="col water-btn">-->
+<!--                <button (click)="onActionBtn('coldWater', actionTime)" class="action-button">-->
+<!--                  <div>-->
+<!--                    <span class="action-name">Αντλία κρύου νερού</span>-->
+<!--                  </div>-->
+<!--                </button>-->
+<!--            </div>-->
+<!--            <div class="col water-btn">-->
+<!--                <button (click)="onActionBtn('hotWater', actionTime)" class="action-button">-->
+<!--                  <div>-->
+<!--                    <span class="action-name">Αντλία ζεστού νερού</span>-->
+<!--                  </div>-->
+<!--                </button>-->
+<!--            </div>-->
+<!--        </div>-->
+<!--        <div class="row" style="margin-top: 50px;">-->
+<!--            <div class="col water-btn">-->
+<!--                <button (click)="onActionBtn('acid', actionTime)" class="action-button">-->
+<!--                  <div>-->
+<!--                    <span class="action-name">Δεξαμενή Οξύ</span>-->
+<!--                  </div>-->
+<!--                </button>-->
+<!--            </div>-->
+<!--            <div class="col water-btn">-->
+<!--                <button (click)="onActionBtn('base', actionTime)" class="action-button">-->
+<!--                  <div>-->
+<!--                    <span class="action-name">Δεξαμενή Βάση</span>-->
+<!--                  </div>-->
+<!--                </button>-->
+<!--            </div>-->
+<!--        </div>-->
+<!--    </div>-->
+<!--    -->
+</div>

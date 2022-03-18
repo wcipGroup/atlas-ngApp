@@ -5,6 +5,7 @@ import { environment } from '../../environments/environment';
 import {MatDialog, MatDialogRef, MAT_DIALOG_DATA} from '@angular/material/dialog';
 import {NewApplicationDialog} from './add-application/add-application.component'
 import {NewDeviceDialog} from './add-device/add-device.component'
+import {NewGatewayDialog} from './add-gateway/add-gateway.component'
 import {ChangeIntervalDialog} from './change-interval/change-interval.component'
 
 @Component({
@@ -17,8 +18,10 @@ export class ProfileComponent implements OnInit{
     profile
     application = undefined
     devices = [];
+    gateways = [];
     showDevices = false;
     displayedColumns: string[] = ['devName', 'devAddr', 'lastSeen', 'interval'];
+    gatewayTableColumns: string[] = ['gwName', 'gwId', 'lastSeen']
     newPass
     autoActions
     autoActionsTimePeriod
@@ -55,7 +58,7 @@ export class ProfileComponent implements OnInit{
             'Content-Type': 'application/json',
             'Authorization': 'Bearer ' + JSON.parse(localStorage.getItem('currentUser'))["access_token"]
         });
-        this.http.get<any>(`${environment.apiUrl}user-data/applications/${this.currentUser.identity}`, {headers})
+        this.http.get<any>(`${environment.apiUrl}user-data/applications`, {headers})
         .subscribe(data => {
             this.applications = data["applications"]
         })
@@ -71,7 +74,7 @@ export class ProfileComponent implements OnInit{
                     'Content-Type': 'application/json',
                     'Authorization': 'Bearer ' + JSON.parse(localStorage.getItem('currentUser'))["access_token"]
                 });
-                this.http.post<any>(`${environment.apiUrl}user-data/applications/${this.currentUser.identity}`, result, {headers})
+                this.http.post<any>(`${environment.apiUrl}user-data/applications`, result, {headers})
                 .subscribe(
                     data => {
                         alert('Η εφαρμογή προστέθηκε επιτυχώς')
@@ -120,6 +123,7 @@ export class ProfileComponent implements OnInit{
                 .subscribe(
                     data => {
                         alert('Η συσκευή προστέθηκε επιτυχώς')
+                        this.appSelected(this.application)
                     },
                     error => {
                         alert('Υπήρξε κάποιο πρόβλημα. Παρακαλώ δοκιμάστε πάλι σε λίγα λεπτά');
@@ -128,8 +132,30 @@ export class ProfileComponent implements OnInit{
             }
         })
     }
+    addGateway(){
+        const dialogRef = this.dialog.open(NewGatewayDialog, {
+            width: '250px'
+        });
+        dialogRef.afterClosed().subscribe(result => {
+            if (result != undefined){
+                const headers = new HttpHeaders({
+                    'Content-Type': 'application/json',
+                    'Authorization': 'Bearer ' + JSON.parse(localStorage.getItem('currentUser'))["access_token"]
+                });
+                this.http.post<any>(`${environment.apiUrl}gateways/${this.application.appId}`, result, {headers})
+                    .subscribe(
+                        data => {
+                            alert('Ο κόμβος προστέθηκε επιτυχώς')
+                            this.appSelected(this.application)
+                        },
+                        error => {
+                            alert('Υπήρξε κάποιο πρόβλημα. Παρακαλώ δοκιμάστε πάλι σε λίγα λεπτά');
+                        }
+                    );
+            }
+        })
+    }
     appSelected(app){
-        console.log(app)
         this.application = app
         const headers = new HttpHeaders({
             'Content-Type': 'application/json',
@@ -138,12 +164,18 @@ export class ProfileComponent implements OnInit{
         this.http.get<any>(`${environment.apiUrl}user-data/devices/${app['appId']}`, {headers})
         .subscribe(
             data => {
-                console.log(data)
                 this.devices = data["devices"];
                 this.showDevices = true;
             }, error =>{
                 console.log(error)
         })
+        this.http.get<any>(`${environment.apiUrl}gateways/${app['appId']}`, {headers})
+            .subscribe(
+                data => {
+                    this.gateways = data["gateways"];
+                }, error =>{
+                    console.log(error)
+                })
     }
 
     setAutoActions(){

@@ -1,0 +1,23 @@
+<h1 mat-dialog-title>Επιλογή επιθυμητής ενέργειας</h1>
+<div mat-dialog-content>
+  <mat-form-field>
+    <mat-label>Ενέργεια</mat-label>
+    <mat-select [(value)]="data.action">
+      <mat-option
+              *ngFor="let action of gwActions"
+              [value]="action">
+        {{action}}
+      </mat-option>
+    </mat-select>
+  </mat-form-field>
+</div>
+<div mat-dialog-content>
+  <mat-form-field>
+    <mat-label>Διάρκεια ενέργειας</mat-label>
+    <input matInput [(ngModel)]="data.actionTime">
+  </mat-form-field>
+</div>
+<div mat-dialog-actions>
+  <button mat-button (click)="onNoClick()" style="margin: auto;">Ακύρωση</button>
+  <button mat-button [mat-dialog-close]="data" cdkFocusInitial style="margin: auto;">Καταχώρηση</button>
+</div>

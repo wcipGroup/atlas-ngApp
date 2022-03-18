@@ -1,0 +1,19 @@
+<h1 mat-dialog-title>Προσθήκη νέας εφαρμογής</h1>
+<div mat-dialog-content>
+    <p>Επιθυμητό όνομα εφαρμογής</p>
+    <mat-form-field>
+        <mat-label>Όνομα κόμβου</mat-label>
+        <input matInput [(ngModel)]="data.gwName">
+    </mat-form-field>
+</div>
+<div mat-dialog-content>
+    <p>Συμπληρώστε το μοναδικό αναγνωριστικό κόμβου (gwId).</p>
+    <mat-form-field>
+        <mat-label>Αναγνωριστικό κόμβου</mat-label>
+        <input matInput [(ngModel)]="data.gwId">
+    </mat-form-field>
+</div>
+<div mat-dialog-actions>
+    <button mat-button (click)="onNoClick()" style="margin: auto;">Ακύρωση</button>
+    <button mat-button [mat-dialog-close]="data" cdkFocusInitial style="margin: auto;">Καταχώρηση</button>
+</div>
