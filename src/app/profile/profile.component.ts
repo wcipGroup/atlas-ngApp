@@ -7,6 +7,7 @@ import {NewApplicationDialog} from './add-application/add-application.component'
 import {NewDeviceDialog} from './add-device/add-device.component'
 import {NewGatewayDialog} from './add-gateway/add-gateway.component'
 import {ChangeIntervalDialog} from './change-interval/change-interval.component'
+import { ChangeTxPowerDialog } from './change-tx-power/change-tx-power.component'
 
 @Component({
     templateUrl: './profile.component.html',
@@ -20,7 +21,7 @@ export class ProfileComponent implements OnInit{
     devices = [];
     gateways = [];
     showDevices = false;
-    displayedColumns: string[] = ['devName', 'devAddr', 'lastSeen', 'interval'];
+    displayedColumns: string[] = ['devName', 'devAddr', 'lastSeen', 'interval', "txPower"];
     gatewayTableColumns: string[] = ['gwName', 'gwId', 'lastSeen']
     newPass
     autoActions
@@ -106,6 +107,29 @@ export class ProfileComponent implements OnInit{
                         alert('Υπήρξε κάποιο πρόβλημα. Παρακαλώ δοκιμάστε πάλι σε λίγα λεπτά');
                     }
                 );
+            }
+        })
+    }
+    changeTxPower(devAddr){
+        const dialogRef = this.dialog.open(ChangeTxPowerDialog, {
+            width: '250px'
+        });
+        dialogRef.afterClosed().subscribe(result => {
+            if (result != undefined){
+                console.log(`new tx power for ${devAddr}: ${result.txPower}`)
+                const headers = new HttpHeaders({
+                    'Content-Type': 'application/json',
+                    'Authorization': 'Bearer ' + JSON.parse(localStorage.getItem('currentUser'))["access_token"]
+                });
+                this.http.post<any>(`${environment.apiUrl}user-data/${devAddr}/txpower`, result, {headers})
+                    .subscribe(
+                        data => {
+                            alert('Η αλλαγή ισχύος καταχωρήθηκε επιτυχώς')
+                        },
+                        error => {
+                            alert('Υπήρξε κάποιο πρόβλημα. Παρακαλώ δοκιμάστε πάλι σε λίγα λεπτά');
+                        }
+                    );
             }
         })
     }
@@ -220,5 +244,13 @@ export class ProfileComponent implements OnInit{
                 );
         }
         this.newPass = ""
+    }
+
+    powerToH(power){
+        switch (power){
+            default: return "Χαμηλή ισχύς"
+            case 1: return "Μεσαία ισχύς"
+            case 2: return "Υψηλή ισχύς"
+        }
     }
 }

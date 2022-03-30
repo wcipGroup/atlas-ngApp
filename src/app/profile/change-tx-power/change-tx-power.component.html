@@ -1,0 +1,18 @@
+<h1 mat-dialog-title>Αλλαγή περιόδου αποστολής δεδομένων</h1>
+<div mat-dialog-content>
+    <p>Επιθυμητή περίοδος</p>
+    <mat-form-field>
+        <mat-label>Περίοδος (σε λεπτά)</mat-label>
+        <mat-select [(value)]="data.txPower">
+            <mat-option
+                    *ngFor="let level of powerLevels"
+                    [value]="level">
+                {{powerToH(level)}}
+            </mat-option>
+        </mat-select>
+    </mat-form-field>
+</div>
+<div mat-dialog-actions>
+    <button mat-button (click)="onNoClick()" style="margin: auto;">Ακύρωση</button>
+    <button mat-button [mat-dialog-close]="data" cdkFocusInitial style="margin: auto;">Καταχώρηση</button>
+</div>

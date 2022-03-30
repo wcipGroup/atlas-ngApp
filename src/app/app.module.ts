@@ -21,6 +21,7 @@ import { NewDeviceDialog } from './profile/add-device/add-device.component'
 import { NewGatewayDialog } from "./profile/add-gateway/add-gateway.component";
 import { GwActionDialog } from "./home/gw-action/gw-action.component";
 import { ChangeIntervalDialog } from './profile/change-interval/change-interval.component'
+import { ChangeTxPowerDialog } from './profile/change-tx-power/change-tx-power.component'
 import { ChartComponent } from "./chart";
 import { NotificationBodyDialog } from './notification/notification-body'
 
@@ -66,6 +67,7 @@ import {NgbRatingModule} from "@ng-bootstrap/ng-bootstrap";
     NewGatewayDialog,
     GwActionDialog,
     ChangeIntervalDialog,
+    ChangeTxPowerDialog,
     ChartComponent,
     NotificationBodyDialog
   ],
@@ -100,6 +102,6 @@ import {NgbRatingModule} from "@ng-bootstrap/ng-bootstrap";
   providers: [
   ],
   bootstrap: [AppComponent],
-  entryComponents: [NewApplicationDialog, NewDeviceDialog, NewGatewayDialog,GwActionDialog, ChangeIntervalDialog, NotificationBodyDialog]
+  entryComponents: [NewApplicationDialog, NewDeviceDialog, NewGatewayDialog,GwActionDialog, ChangeIntervalDialog, ChangeTxPowerDialog, NotificationBodyDialog]
 })
 export class AppModule { }

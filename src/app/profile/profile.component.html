@@ -62,13 +62,28 @@
                     <td mat-cell *matCellDef="let element">
                         <div *ngIf="element.interval"> {{element.interval}} λεπτά
                             <span class="material-icons-outlined edit-interval" (click)="changeInterval(element.devAddr)">
-                        edit
-                    </span>
+                                edit
+                            </span>
                         </div>
                         <div *ngIf="!element.interval"> 5 λεπτά
                             <span class="material-icons-outlined edit-interval" (click)="changeInterval(element.devAddr)">
-                        edit
-                    </span>
+                                edit
+                            </span>
+                        </div>
+                    </td>
+                </ng-container>
+                <ng-container matColumnDef="txPower">
+                    <th mat-header-cell *matHeaderCellDef> Ισχύς αποστολής</th>
+                    <td mat-cell *matCellDef="let element">
+                        <div *ngIf="element.txPower"> {{powerToH(element.txPower)}}
+                            <span class="material-icons-outlined edit-interval" (click)="changeTxPower(element.devAddr)">
+                                edit
+                            </span>
+                        </div>
+                        <div *ngIf="!element.txPower"> Χαμηλή ισχύς
+                            <span class="material-icons-outlined edit-interval" (click)="changeTxPower(element.devAddr)">
+                                edit
+                            </span>
                         </div>
                     </td>
                 </ng-container>
