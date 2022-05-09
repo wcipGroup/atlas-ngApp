@@ -87,6 +87,16 @@
                         </div>
                     </td>
                 </ng-container>
+                <ng-container matColumnDef="automations">
+                    <th mat-header-cell *matHeaderCellDef style="text-align: center"style="text-align: center"> Βελτιστοποίηση παραμέτρων </th>
+                    <td mat-cell *matCellDef="let element" style="text-align: center">
+                        <input
+                                type="checkbox"
+                                [(ngModel)]="element.optimizations"
+                                (click)="changeOptimizationsPreference(element)"
+                        />
+                    </td>
+                </ng-container>
                 <tr mat-header-row *matHeaderRowDef="displayedColumns"></tr>
                 <tr mat-row *matRowDef="let row; columns: displayedColumns;"></tr>
             </table>

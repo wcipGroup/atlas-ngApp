@@ -21,7 +21,7 @@ export class ProfileComponent implements OnInit{
     devices = [];
     gateways = [];
     showDevices = false;
-    displayedColumns: string[] = ['devName', 'devAddr', 'lastSeen', 'interval', "txPower"];
+    displayedColumns: string[] = ['devName', 'devAddr', 'lastSeen', 'interval', "txPower", "automations"];
     gatewayTableColumns: string[] = ['gwName', 'gwId', 'lastSeen']
     newPass
     autoActions
@@ -133,6 +133,31 @@ export class ProfileComponent implements OnInit{
             }
         })
     }
+
+    changeOptimizationsPreference(element){
+        // if (element.automations == undefined){
+        //     element.automations = false
+        // }
+        this.sendOptimizationsPreference(element)
+    }
+    sendOptimizationsPreference(element){
+        let preference = true
+        if (element.optimizations != undefined){preference = !element.optimizations}
+        const headers = new HttpHeaders({
+            'Content-Type': 'application/json',
+            'Authorization': 'Bearer ' + JSON.parse(localStorage.getItem('currentUser'))["access_token"]
+        });
+        this.http.put<any>(`${environment.apiUrl}user-data/${element.devAddr}/optimizations`, {"preference": preference}, {headers})
+            .subscribe(
+                data => {
+                    alert('Η αλλαγή προτίμησης καταχωρήθηκε επιτυχώς')
+                },
+                error => {
+                    alert('Υπήρξε κάποιο πρόβλημα. Παρακαλώ δοκιμάστε πάλι σε λίγα λεπτά');
+                }
+            );
+    }
+
     addDevice(){
         const dialogRef = this.dialog.open(NewDeviceDialog, {
             width: '250px'
