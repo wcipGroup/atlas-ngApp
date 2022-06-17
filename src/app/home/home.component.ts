@@ -23,7 +23,7 @@ export class HomeComponent implements OnInit {
   showProperties = false;
   allStatus: deviceStatus[] = []
   gatewayStatus: gwStatus[] = []
-  displayedColumns = ['devName', 'devAddr', 'temperature', 'ph', 'do', 'conductivity', 'date']
+  displayedColumns = ['devName', 'devAddr', 'temperature', 'ph', 'do', 'conductivity', 'wcfi', 'date']
   gwDisplayedColumns = ['gwName', 'gwId', 'action', 'lastSeen']
   actionTime: 20;
   actionTimeField = new FormControl('', [Validators.required]);
@@ -73,6 +73,7 @@ export class HomeComponent implements OnInit {
                 dst.temperature = status["SensorsValue"].find(sensor => sensor.sensorId == 1).value
                 dst.ph = status["SensorsValue"].find(sensor => sensor.sensorId == 2).value.toFixed(2)
                 dst.do = status["SensorsValue"].find(sensor => sensor.sensorId == 3).value
+                dst.wcfi = status["wcfi"]
                 dst.conductivity = status["SensorsValue"].find(sensor => sensor.sensorId == 4).value
               }
             })

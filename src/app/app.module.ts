@@ -23,6 +23,7 @@ import { GwActionDialog } from "./home/gw-action/gw-action.component";
 import { ChangeIntervalDialog } from './profile/change-interval/change-interval.component'
 import { ChangeTxPowerDialog } from './profile/change-tx-power/change-tx-power.component'
 import { ChartComponent } from "./chart";
+import { PredictionsComponent } from "./predictions";
 import { NotificationBodyDialog } from './notification/notification-body'
 
 import { MDBBootstrapModule } from 'angular-bootstrap-md';
@@ -69,6 +70,7 @@ import {NgbRatingModule} from "@ng-bootstrap/ng-bootstrap";
     ChangeIntervalDialog,
     ChangeTxPowerDialog,
     ChartComponent,
+    PredictionsComponent,
     NotificationBodyDialog
   ],
     imports: [

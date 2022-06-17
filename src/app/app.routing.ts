@@ -11,6 +11,7 @@ import { RatingComponent } from "./rating";
 import { NotificationComponent } from "./notification";
 import { ProfileComponent } from "./profile";
 import { ChartComponent } from "./chart";
+import { PredictionsComponent } from "./predictions";
 
 const routes: Routes = [
   { path: 'login', component: LoginComponent },
@@ -23,6 +24,7 @@ const routes: Routes = [
   { path: 'notification', component: NotificationComponent, canActivate: [AuthGuard] },
   { path: 'profile', component: ProfileComponent, canActivate: [AuthGuard] },
   { path: 'chart', component: ChartComponent, canActivate: [AuthGuard] },
+  { path: 'predictions', component: PredictionsComponent, canActivate: [AuthGuard] },
   // otherwise redirect to home
   { path: '**', redirectTo: 'home' }
 ];

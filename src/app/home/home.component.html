@@ -40,6 +40,10 @@
             <th mat-header-cell *matHeaderCellDef> Αγωγιμότητα </th>
             <td mat-cell *matCellDef="let element"> {{element.conductivity}} </td>
         </ng-container>
+        <ng-container matColumnDef="wcfi">
+            <th mat-header-cell *matHeaderCellDef> Δείκτης ποιότητας </th>
+            <td mat-cell *matCellDef="let element"> {{element.wcfi}} </td>
+        </ng-container>
         <ng-container matColumnDef="date">
             <th mat-header-cell *matHeaderCellDef> Last Seen </th>
             <td mat-cell *matCellDef="let element">

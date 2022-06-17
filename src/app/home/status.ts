@@ -4,6 +4,7 @@ export interface deviceStatus{
     temperature: number
     ph: number
     do: number
+    wcfi: number
     conductivity: number
     date: Date
   }
