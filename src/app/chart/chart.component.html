@@ -18,11 +18,11 @@
 <div class="container" style="text-align: center; font-weight: bold;">
     <div class="row">
         <div class="col">
-            <span *ngIf="device_data.length" class="chart-label">Θερμοκρασία</span>
+            <span *ngIf="device_data.length" class="chart-label">Θερμοκρασία (C) </span>
             <canvas id="temperature"></canvas>
         </div>
         <div class="col">
-            <span *ngIf="device_data.length" class="chart-label">PH</span>
+            <span *ngIf="device_data.length" class="chart-label">pH</span>
             <canvas id="ph"></canvas>
         </div>
     </div>
@@ -32,7 +32,7 @@
             <canvas id="do"></canvas>
         </div>
         <div class="col">
-            <span *ngIf="device_data.length" class="chart-label">Αγωγιμότητα</span>
+            <span *ngIf="device_data.length" class="chart-label">Αγωγιμότητα (mS/cm) </span>
             <canvas id="conductivity"></canvas>
         </div>
         <div class="col">

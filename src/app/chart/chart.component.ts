@@ -70,7 +70,7 @@ export class ChartComponent implements OnInit{
               labels: this.date_values,
               datasets: [
                 {
-                  label: 'Θερμοκρασία',
+                  label: 'Θερμοκρασία (C)',
                   borderColor: ['red'],
                   data: this.temperature_values,
                   fill: false
