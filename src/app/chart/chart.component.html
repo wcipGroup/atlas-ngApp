@@ -16,18 +16,7 @@
 </div>
 
 <div class="container">
-    <h4 class="title-custom">Συσκευές αισθητήρων</h4>
-    <table *ngIf="devices.length" mat-table [dataSource]="allStatus" class="mat-elevation-z8 tableFW">
-        <ng-container matColumnDef="date">
-            <th mat-header-cell *matHeaderCellDef> Last Seen </th>
-            <td mat-cell *matCellDef="let element">
-                <div *ngIf="element.date"> {{element.date | date:'d/M/yy h:mm a'}}</div>
-                <div *ngIf="!element.date"> Ποτέ </div>
-            </td>
-        </ng-container>
-        <tr mat-header-row *matHeaderRowDef="displayedColumns"></tr>
-        <tr mat-row *matRowDef="let row; columns: displayedColumns;"></tr>
-    </table>
+    <h4 class="title-custom">Συσκευές αισθητήρων {{device_data.length}}</h4>
 </div>
 
 <div class="container" style="text-align: center; font-weight: bold;">
