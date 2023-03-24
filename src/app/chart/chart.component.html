@@ -16,7 +16,7 @@
 </div>
 
 <div class="container" style="text-align: center; font-weight: bold;">
-    <h4>{{date_values))</h4>
+    <td mat-cell *matCellDef="let element"> {{element.date}} </td>
     <div class="row">
         <div class="col">
             <span *ngIf="device_data.length" class="chart-label">Θερμοκρασία (<sup>o</sup>C)</span>
