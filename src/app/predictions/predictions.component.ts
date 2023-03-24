@@ -52,7 +52,6 @@ export class PredictionsComponent implements OnInit{
         this.ph_values = [];
         this.do_vaues = [];
         this.conductivity_values = [];
-
         this.device_data.map(data=>{
             this.date_values.push(data["date"])
             var sensor_value = data["SensorsValue"]
@@ -61,7 +60,6 @@ export class PredictionsComponent implements OnInit{
             this.do_vaues.push(sensor_value.find(sensor=>sensor.sensorId==3).value)
             this.conductivity_values.push(sensor_value.find(sensor=>sensor.sensorId==4).value)
         })
-
         new Chart(document.getElementById('temperature') as HTMLCanvasElement, {
             type: 'line',
             data: {
