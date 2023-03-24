@@ -97,7 +97,7 @@ export class ChartComponent implements OnInit{
               labels: this.date_values,
               datasets: [
                 {
-                  label: 'PH',
+                  label: 'pH',
                   borderColor: ['green'],
                   data: this.ph_values,
                   fill: false
