@@ -41,10 +41,10 @@ export class PredictionsComponent implements OnInit{
             'Authorization': 'Bearer ' + JSON.parse(localStorage.getItem('currentUser'))["access_token"]
         });
         this.http.get<any>(`${environment.apiUrl}user-data/predictions/${this.device.devAddr}`, {headers})
-            .subscribe(data => {
-                this.device_data = data["data"]
-                this.createCharts()
-            })
+        .subscribe(data => {
+            this.device_data = data["data"]
+            this.createCharts()
+        })
     }
     createCharts(){
         this.date_values = [];
