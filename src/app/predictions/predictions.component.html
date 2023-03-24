@@ -15,7 +15,7 @@
     </div>
 </div>
 
-<div class="container" *ngIf="showProperties">
+<div class="container">
     <h4 class="title-custom">Συσκευές αισθητήρων</h4>
     <table *ngIf="devices.length" mat-table [dataSource]="allStatus" class="mat-elevation-z8 tableFW">
         <ng-container matColumnDef="date">
@@ -33,7 +33,7 @@
 <div class="container" style="text-align: center; font-weight: bold;">
     <div class="row">
         <div class="col">
-            <span *ngIf="device_data.length" class="chart-label">Θερμοκρασία</span>
+            <span class="chart-label">Θερμοκρασία</span>
             <canvas id="temperature"></canvas>
         </div>
         <div class="col">
