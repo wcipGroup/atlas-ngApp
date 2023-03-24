@@ -55,12 +55,15 @@ export class PredictionsComponent implements OnInit{
         this.conductivity_values = [];
         this.wcfi_values = [];
 
-        this.date_values = this.device_data["date"]
-        this.temperature_values = this.device_data["temperature"]
-        this.ph_values = this.device_data["ph"]
-        this.do_vaues = this.device_data["do"]
-        this.conductivity_values = this.device_data["conductivity"]
-        this.wcfi_values = this.device_data["wcfi"]
+        this.device_data.map(data=>{
+            this.date_values.push(data["date"])
+            var sensor_value = data["SensorsValue"]
+            this.temperature_values.push(sensor_value.find(sensor=>sensor.sensorId==1).value)
+            this.ph_values.push(sensor_value.find(sensor=>sensor.sensorId==2).value)
+            this.do_vaues.push(sensor_value.find(sensor=>sensor.sensorId==3).value)
+            this.conductivity_values.push(sensor_value.find(sensor=>sensor.sensorId==4).value)
+            this.wcfi_values.push(data["wcfi"])
+        })
 
         new Chart(document.getElementById('temperature') as HTMLCanvasElement, {
             type: 'line',
