@@ -40,7 +40,7 @@ export class PredictionsComponent implements OnInit{
             'Content-Type': 'application/json',
             'Authorization': 'Bearer ' + JSON.parse(localStorage.getItem('currentUser'))["access_token"]
         });
-        this.http.get<any>(`${environment.apiUrl}user-data/predictions/${this.device.devAddr}`, {headers})
+        this.http.get<any>(`${environment.apiUrl}user-data/data/${this.device.devAddr}`, {headers})
         .subscribe(data => {
             this.device_data = data["data"]
             this.createCharts()
@@ -52,6 +52,7 @@ export class PredictionsComponent implements OnInit{
         this.ph_values = [];
         this.do_vaues = [];
         this.conductivity_values = [];
+        this.device_data = this.device_data.slice(-30)
         this.device_data.map(data=>{
             this.date_values.push(data["date"])
             var sensor_value = data["SensorsValue"]
