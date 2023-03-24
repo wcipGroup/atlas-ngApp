@@ -52,7 +52,7 @@ export class PredictionsComponent implements OnInit{
         this.ph_values = [];
         this.do_vaues = [];
         this.conductivity_values = [];
-        //this.device_data = this.device_data.slice(-6)
+        this.device_data = this.device_data.slice(6)
         this.device_data.map(data=>{
             this.date_values.push(data["date"])
             var sensor_value = data["SensorsValue"]
