@@ -33,7 +33,7 @@
 <div class="container" style="text-align: center; font-weight: bold;">
     <div class="row">
         <div class="col">
-            <span class="chart-label">Θερμοκρασία</span>
+            <span *ngIf="device_data.length" class="chart-label">Θερμοκρασία</span>
             <canvas id="temperature"></canvas>
         </div>
         <div class="col">
