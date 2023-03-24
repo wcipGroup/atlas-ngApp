@@ -56,7 +56,7 @@ export class PredictionsComponent implements OnInit{
         this.wcfi_values = [];
 
         this.device_data.map(data=>{
-            this.date_values.push(data["date"])
+            //this.date_values.push(data["date"])
             var sensor_value = data["SensorsValue"]
             this.temperature_values.push(sensor_value.find(sensor=>sensor.sensorId==1).value)
             this.ph_values.push(sensor_value.find(sensor=>sensor.sensorId==2).value)
