@@ -19,7 +19,6 @@ export class PredictionsComponent implements OnInit{
     ph_values = [];
     do_vaues = [];
     conductivity_values = [];
-    wcfi_values = [];
 
     constructor(private http: HttpClient){}
     ngOnInit(): void {
@@ -53,7 +52,6 @@ export class PredictionsComponent implements OnInit{
         this.ph_values = [];
         this.do_vaues = [];
         this.conductivity_values = [];
-        this.wcfi_values = [];
 
         this.device_data.map(data=>{
             this.date_values.push(data["date"])
@@ -62,7 +60,6 @@ export class PredictionsComponent implements OnInit{
             this.ph_values.push(sensor_value.find(sensor=>sensor.sensorId==2).value)
             this.do_vaues.push(sensor_value.find(sensor=>sensor.sensorId==3).value)
             this.conductivity_values.push(sensor_value.find(sensor=>sensor.sensorId==4).value)
-            this.wcfi_values.push(data["wcfi"])
         })
 
         new Chart(document.getElementById('temperature') as HTMLCanvasElement, {
@@ -155,33 +152,6 @@ export class PredictionsComponent implements OnInit{
                         label: 'Αγωγιμότητα',
                         borderColor: ['gray'],
                         data: this.conductivity_values,
-                        fill: false
-                    }
-                ]
-            },
-            options: {
-                responsive: true,
-                legend: { display: false },
-                title: {display: false},
-                scales: {
-                    xAxes: [{
-                        ticks: {
-                            autoSkip: true,
-                            maxTicksLimit: 5
-                        }
-                    }]
-                }
-            }
-        });
-        new Chart(document.getElementById('wcfi') as HTMLCanvasElement, {
-            type: 'line',
-            data: {
-                labels: this.date_values,
-                datasets: [
-                    {
-                        label: 'Δείκτης ποιότητας',
-                        borderColor: ['gray'],
-                        data: this.wcfi_values,
                         fill: false
                     }
                 ]
