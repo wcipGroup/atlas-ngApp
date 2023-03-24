@@ -31,9 +31,9 @@ export class PredictionsComponent implements OnInit{
             'Authorization': 'Bearer ' + JSON.parse(localStorage.getItem('currentUser'))["access_token"]
         });
         this.http.get<any>(`${environment.apiUrl}user-data/devices-by-owner/${this.currentUser.identity}`, {headers})
-            .subscribe(data => {
-                this.devices = data["devices"]
-            })
+        .subscribe(data => {
+            this.devices = data["devices"]
+        })
     }
     devSelected(){
         const headers = new HttpHeaders({
