@@ -85,7 +85,7 @@ export class ChartComponent implements OnInit{
                 xAxes: [{
                     type: 'time',
                     time: {
-                      unit: 'hour',
+                      unit: 'minute',
                       displayFormats: {
                         hour: 'DD/MM/YYYY, HH:mm'
                       }
