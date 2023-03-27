@@ -87,10 +87,8 @@ export class ChartComponent implements OnInit{
               legend: { display: false },
               title: {display: false},
               scales: {
-                x: {
-                    type: 'time'
-                },
                 xAxes: [{
+                    type: 'time',
                   ticks: {
                     autoSkip: true,
                     maxTicksLimit: 5
