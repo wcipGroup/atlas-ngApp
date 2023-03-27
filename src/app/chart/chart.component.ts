@@ -83,17 +83,17 @@ export class ChartComponent implements OnInit{
               title: {display: false},
               scales: {
                 xAxes: [{
-                    type: 'time',
+                  ticks: {
+                    autoSkip: true,
+                    maxTicksLimit: 5
+                  },
+                  type: 'time',
                     time: {
                       unit: 'minute',
                       displayFormats: {
                         minute: 'DD/MM/YYYY, HH:mm'
                       }
-                    },
-                  ticks: {
-                    autoSkip: true,
-                    maxTicksLimit: 5
-                  }
+                    }
                 }]
               }
             }
