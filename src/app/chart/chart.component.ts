@@ -97,16 +97,6 @@ export class ChartComponent implements OnInit{
                     }
                 }]
               },
-                    tooltips: {
-      mode: 'nearest',
-      intersect: false,
-      callbacks: {
-        label: function(tooltipItem, data) {
-          return data.datasets[tooltipItem.datasetIndex].label + ': ' + tooltipItem.yLabel.toFixed(2) + '°C'; // Display the formatted y-axis value in the tooltip label
-        }
-      },
-      displayColors: false
-    }
             }
           });
         new Chart(document.getElementById('ph') as HTMLCanvasElement, {
@@ -131,7 +121,15 @@ export class ChartComponent implements OnInit{
                   ticks: {
                     autoSkip: true,
                     maxTicksLimit: 5
-                  }
+                  },
+                  type: 'time',
+                    time: {
+                      unit: 'minute',
+                      displayFormats: {
+                        minute: 'DD/MM/YYYY, HH:mm'
+                      },
+                      tooltipFormat: 'DD/MM/YYYY, HH:mm'
+                    }
                 }]
               }
             }
