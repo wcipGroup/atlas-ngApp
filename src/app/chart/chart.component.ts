@@ -92,7 +92,8 @@ export class ChartComponent implements OnInit{
                       unit: 'minute',
                       displayFormats: {
                         minute: 'DD/MM/YYYY, HH:mm'
-                      }
+                      },
+                      tooltipFormat: 'DD/MM/YYYY, HH:mm'
                     }
                 }]
               }
