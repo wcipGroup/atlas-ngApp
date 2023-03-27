@@ -89,8 +89,8 @@ export class ChartComponent implements OnInit{
                           hour: 'DD/MM/YYYY, HH:mm'
                           }
                     },
-                  tooltipFormat: 'DD/MM/YYYY, HH:mm',
                   ticks: {
+                    tooltipFormat: 'DD/MM/YYYY, HH:mm',
                     autoSkip: true,
                     maxTicksLimit: 5
                   }
