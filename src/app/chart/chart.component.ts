@@ -89,7 +89,11 @@ export class ChartComponent implements OnInit{
                     },
                   ticks: {
                     autoSkip: true,
-                    maxTicksLimit: 5
+                    maxTicksLimit: 5,
+                    type: 'time',
+                      time: {
+                      tooltipFormat: 'DD/MM/YYYY, HH:mm'
+                      }
                   }
                 }]
               }
