@@ -85,15 +85,12 @@ export class ChartComponent implements OnInit{
                 xAxes: [{
                     type: 'time',
                       time: {
-                      tooltipFormat: 'DD/MM/YYYY, HH:mm'
+                          parser: 'DD/MM/YYYY HH:mm',
+                          tooltipFormat: 'DD/MM/YYYY, HH:mm'
                     },
                   ticks: {
                     autoSkip: true,
-                    maxTicksLimit: 5,
-                    type: 'time',
-                      time: {
-                      tooltipFormat: 'DD/MM/YYYY, HH:mm'
-                      }
+                    maxTicksLimit: 5
                   }
                 }]
               }
