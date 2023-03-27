@@ -77,6 +77,11 @@ export class ChartComponent implements OnInit{
                 }
               ]
             },
+            scales: {
+              x: {
+                type: 'time'
+              }
+            },
             options: {
               responsive: true,
               legend: { display: false },
