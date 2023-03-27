@@ -82,13 +82,13 @@ export class ChartComponent implements OnInit{
               legend: { display: false },
               title: {display: false},
               scales: {
-                x: [{
-                    type: 'time',
+                  x: {
+                      type: 'time',
                       time: {
-                          displayFormats: {
-                          quarter: 'DD/MM/YYYY, HH:mm'
-                          }
-                    },
+                          tooltipFormat: 'DD/MM/YYYY, HH:mm'
+                        }
+                  },
+                xAxes: [{
                   ticks: {
                     autoSkip: true,
                     maxTicksLimit: 5
