@@ -85,7 +85,9 @@ export class ChartComponent implements OnInit{
                 xAxes: [{
                     type: 'time',
                       time: {
-                          unit: 'DD/MM/YYYY, HH:mm'
+                          displayFormats: {
+                          quarter: 'DD/MM/YYYY, HH:mm'
+                          }
                     },
                   ticks: {
                     autoSkip: true,
