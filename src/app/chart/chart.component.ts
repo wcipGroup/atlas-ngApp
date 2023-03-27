@@ -96,7 +96,17 @@ export class ChartComponent implements OnInit{
                       tooltipFormat: 'DD/MM/YYYY, HH:mm'
                     }
                 }]
-              }
+              },
+                    tooltips: {
+      mode: 'nearest',
+      intersect: false,
+      callbacks: {
+        label: function(tooltipItem, data) {
+          return data.datasets[tooltipItem.datasetIndex].label + ': ' + tooltipItem.yLabel.toFixed(2) + '°C'; // Display the formatted y-axis value in the tooltip label
+        }
+      },
+      displayColors: false
+    }
             }
           });
         new Chart(document.getElementById('ph') as HTMLCanvasElement, {
