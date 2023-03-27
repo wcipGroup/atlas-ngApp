@@ -82,7 +82,7 @@ export class ChartComponent implements OnInit{
               legend: { display: false },
               title: {display: false},
               scales: {
-                xAxes: [{
+                x: [{
                     type: 'time',
                       time: {
                           displayFormats: {
