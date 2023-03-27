@@ -129,11 +129,18 @@ export class ChartComponent implements OnInit{
                         minute: 'DD/MM/YYYY, HH:mm'
                       },
                       tooltipFormat: 'DD/MM/YYYY, HH:mm'
+                        }
+                      }],
+                      yAxes: [{
+                        ticks: {
+                          callback: function(value, index, values) {
+                            return value.toFixed(2);
+                          }
+                        }
+                      }]
                     }
-                }]
-              }
-            }
-          });
+                  }
+                });
         new Chart(document.getElementById('do') as HTMLCanvasElement, {
             type: 'line',
             data: {
