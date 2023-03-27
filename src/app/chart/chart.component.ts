@@ -130,13 +130,6 @@ export class ChartComponent implements OnInit{
                       },
                       tooltipFormat: 'DD/MM/YYYY, HH:mm'
                         }
-                      }],
-                      yAxes: [{
-                        ticks: {
-                          callback: function(value, index, values) {
-                            return value.toFixed(2);
-                          }
-                        }
                       }]
                     }
                   }
