@@ -87,7 +87,7 @@ export class ChartComponent implements OnInit{
                     time: {
                       unit: 'minute',
                       displayFormats: {
-                        hour: 'DD/MM/YYYY, HH:mm'
+                        minute: 'DD/MM/YYYY, HH:mm'
                       }
                     },
                   ticks: {
