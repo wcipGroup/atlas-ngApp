@@ -83,14 +83,13 @@ export class ChartComponent implements OnInit{
               title: {display: false},
               scales: {
                 xAxes: [{
-                  type: 'time',
-                      time: {
-                          displayFormats: {
-                          hour: 'DD/MM/YYYY, HH:mm'
-                          }
+                    type: 'time', // Add this property to enable time scale
+                    time: { // Add this object to configure time options
+                      displayFormats: {
+                        hour: 'DD/MM/YYYY, HH:mm' // Add your desired format
+                      }
                     },
                   ticks: {
-                    tooltipFormat: 'DD/MM/YYYY, HH:mm',
                     autoSkip: true,
                     maxTicksLimit: 5
                   }
