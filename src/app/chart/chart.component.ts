@@ -84,6 +84,10 @@ export class ChartComponent implements OnInit{
               scales: {
                 xAxes: [{
                     type: 'time',
+                      time: {
+                      // Luxon format string
+                      tooltipFormat: 'DD/MM/YYYY, hour:minute'
+                    },
                   ticks: {
                     autoSkip: true,
                     maxTicksLimit: 5
