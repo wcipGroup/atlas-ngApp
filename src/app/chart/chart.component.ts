@@ -85,7 +85,7 @@ export class ChartComponent implements OnInit{
                 xAxes: [{
                     type: 'time',
                       time: {
-                      unit: 'day'/'month'/'year', 'hour':'minute'
+                      unit: 'minute'
                     },
                   ticks: {
                     autoSkip: true,
