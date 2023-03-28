@@ -9,9 +9,6 @@ import moment from 'moment';
     templateUrl: './predictions.component.html',
     styleUrls: ['./predictions.component.scss']
 })
-interface ExtendedTickOptions extends Chart.TickOptions {
-  precision?: number;
-}
 export class PredictionsComponent implements OnInit{
     currentUser: any;
     devices = [];
@@ -66,6 +63,9 @@ export class PredictionsComponent implements OnInit{
             this.do_vaues.push(sensor_value.find(sensor=>sensor.sensorId==3).value)
             this.conductivity_values.push(sensor_value.find(sensor=>sensor.sensorId==4).value)
         })
+        interface ExtendedTickOptions extends Chart.TickOptions {
+          precision?: number;
+        }
         new Chart(document.getElementById('temperature') as HTMLCanvasElement, {
             type: 'line',
             data: {
