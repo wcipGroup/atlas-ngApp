@@ -48,7 +48,7 @@ export class ChartComponent implements OnInit{
         })
     }
     createCharts(){
-        const gmtDateStr = data["date"];
+        this.gmtDateStr.push(data["date"])
         const localDate = new Date(gmtDateStr);
         const formattedDate = localDate.toLocaleString('en-GB', {
           day: 'numeric',
