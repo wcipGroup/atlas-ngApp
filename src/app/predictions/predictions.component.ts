@@ -3,6 +3,7 @@ import {Router} from '@angular/router';
 import { environment } from '../../environments/environment';
 import { HttpClient, HttpHeaders } from '@angular/common/http';
 import {Chart} from 'chart.js';
+import moment from 'moment';
 
 @Component({
     templateUrl: './predictions.component.html',
