@@ -4,6 +4,13 @@ import { environment } from '../../environments/environment';
 import { HttpClient, HttpHeaders } from '@angular/common/http';
 import {Chart} from 'chart.js';
 import moment from 'moment';
+import { TickOptions } from 'chart.js';
+
+declare module 'chart.js' {
+  export interface TickOptions {
+    precision?: number;
+  }
+}
 
 @Component({
     templateUrl: './chart.component.html',
@@ -89,6 +96,11 @@ export class ChartComponent implements OnInit{
                     autoSkip: true,
                     maxTicksLimit: 5
                   }
+                }],
+                yAxes: [{
+                    ticks: {
+                        precision: 2
+                    }
                 }]
               }
             }
@@ -116,7 +128,12 @@ export class ChartComponent implements OnInit{
                   autoSkip: true,
                   maxTicksLimit: 5
                 }
-              }]
+              }],
+                yAxes: [{
+                    ticks: {
+                        precision: 3
+                    }
+                }]
             }
           }
         });
@@ -143,6 +160,11 @@ export class ChartComponent implements OnInit{
                     autoSkip: true,
                     maxTicksLimit: 5
                   }
+                }],
+                yAxes: [{
+                    ticks: {
+                        precision: 3
+                    }
                 }]
               }
             }
@@ -170,6 +192,11 @@ export class ChartComponent implements OnInit{
                     autoSkip: true,
                     maxTicksLimit: 5
                   }
+                }],
+                yAxes: [{
+                    ticks: {
+                        precision: 3
+                    }
                 }]
               }
             }
