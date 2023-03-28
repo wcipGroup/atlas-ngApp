@@ -9,6 +9,9 @@ import moment from 'moment';
     templateUrl: './predictions.component.html',
     styleUrls: ['./predictions.component.scss']
 })
+interface ExtendedTickOptions extends Chart.TickOptions {
+  precision?: number;
+}
 export class PredictionsComponent implements OnInit{
     currentUser: any;
     devices = [];
