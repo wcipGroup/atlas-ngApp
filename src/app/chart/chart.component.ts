@@ -133,6 +133,7 @@ export class ChartComponent implements OnInit{
               }],
               yAxes: [{
                 ticks: {
+                  beginAtZero: true,
                   callback: function (value, index, values) {
                     return value.toFixed(2);
                   }
