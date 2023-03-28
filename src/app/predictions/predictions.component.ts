@@ -4,6 +4,13 @@ import { environment } from '../../environments/environment';
 import { HttpClient, HttpHeaders } from '@angular/common/http';
 import {Chart} from 'chart.js';
 import moment from 'moment';
+import { TickOptions } from 'chart.js';
+
+declare module 'chart.js' {
+  export interface TickOptions {
+    precision?: number;
+  }
+}
 
 @Component({
     templateUrl: './predictions.component.html',
@@ -46,9 +53,6 @@ export class PredictionsComponent implements OnInit{
             this.device_data = data["data"]
             this.createCharts()
         })
-    }
-    interface TickOptions {
-      precision?: number;
     }
     createCharts(){
         this.date_values = [];
