@@ -63,7 +63,7 @@ export class PredictionsComponent implements OnInit{
             this.do_vaues.push(sensor_value.find(sensor=>sensor.sensorId==3).value)
             this.conductivity_values.push(sensor_value.find(sensor=>sensor.sensorId==4).value)
         })
-        interface ExtendedTickOptions extends Chart.TickOptions {
+        interface TickOptions {
           precision?: number;
         }
         new Chart(document.getElementById('temperature') as HTMLCanvasElement, {
