@@ -93,6 +93,11 @@ export class PredictionsComponent implements OnInit{
                             autoSkip: true,
                             maxTicksLimit: 5
                         }
+                    }],
+                    yAxes: [{
+                        ticks: {
+                            precision: 2
+                        }
                     }]
                 }
             }
@@ -121,9 +126,9 @@ export class PredictionsComponent implements OnInit{
                             maxTicksLimit: 5
                         }
                     }],
-                     yAxes: [{
+                    yAxes: [{
                         ticks: {
-                            precision: 2
+                            precision: 3
                         }
                     }]
                 }
@@ -152,6 +157,11 @@ export class PredictionsComponent implements OnInit{
                             autoSkip: true,
                             maxTicksLimit: 5
                         }
+                    }],
+                    yAxes: [{
+                        ticks: {
+                            precision: 3
+                        }
                     }]
                 }
             }
@@ -178,6 +188,11 @@ export class PredictionsComponent implements OnInit{
                         ticks: {
                             autoSkip: true,
                             maxTicksLimit: 5
+                        }
+                    }],
+                    yAxes: [{
+                        ticks: {
+                            precision: 3
                         }
                     }]
                 }
