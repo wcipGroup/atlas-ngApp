@@ -108,7 +108,7 @@ export class ChartComponent implements OnInit{
                 label: 'pH',
                 borderColor: ['green'],
                 data: this.ph_values,
-                //fill: false
+                fill: false
               }
             ]
           },
@@ -124,9 +124,9 @@ export class ChartComponent implements OnInit{
                 },
                 type: 'time',
                 time: {
-                  unit: 'second',
+                  unit: 'millisecond',
                   displayFormats: {
-                    second: 'DD/MM/YYYY, HH:mm'
+                    millisecond: 'DD/MM/YYYY, HH:mm'
                   },
                   tooltipFormat: 'DD/MM/YYYY, HH:mm'
                 }
