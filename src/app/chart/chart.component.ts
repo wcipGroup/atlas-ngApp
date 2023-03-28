@@ -108,12 +108,12 @@ export class ChartComponent implements OnInit{
                 label: 'pH',
                 borderColor: ['green'],
                 data: this.ph_values,
-                fill: false
+                //fill: false
               }
             ]
           },
           options: {
-            responsive: true,
+            //responsive: true,
             legend: { display: false },
             title: { display: false },
             scales: {
@@ -124,19 +124,11 @@ export class ChartComponent implements OnInit{
                 },
                 type: 'time',
                 time: {
-                  unit: 'minute',
+                  unit: 'second',
                   displayFormats: {
-                    minute: 'DD/MM/YYYY, HH:mm'
+                    second: 'DD/MM/YYYY, HH:mm'
                   },
                   tooltipFormat: 'DD/MM/YYYY, HH:mm'
-                }
-              }],
-              yAxes: [{
-                ticks: {
-                  beginAtZero: true,
-                  callback: function (value, index, values) {
-                    return value.toFixed(2);
-                  }
                 }
               }]
             }
