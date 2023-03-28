@@ -113,20 +113,20 @@ export class ChartComponent implements OnInit{
             ]
           },
           options: {
-            //responsive: true,
+            responsive: true,
             legend: { display: false },
             title: { display: false },
             scales: {
               xAxes: [{
                 ticks: {
-                  autoSkip: true,
+                  //autoSkip: true,
                   maxTicksLimit: 5
                 },
                 type: 'time',
                 time: {
-                  unit: 'millisecond',
+                  unit: 'minute',
                   displayFormats: {
-                    millisecond: 'DD/MM/YYYY, HH:mm'
+                    minute: 'DD/MM/YYYY, HH:mm'
                   },
                   tooltipFormat: 'DD/MM/YYYY, HH:mm'
                 }
