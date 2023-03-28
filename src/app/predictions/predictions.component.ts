@@ -47,6 +47,9 @@ export class PredictionsComponent implements OnInit{
             this.createCharts()
         })
     }
+    interface TickOptions {
+      precision?: number;
+    }
     createCharts(){
         this.date_values = [];
         this.temperature_values = [];
@@ -63,9 +66,6 @@ export class PredictionsComponent implements OnInit{
             this.do_vaues.push(sensor_value.find(sensor=>sensor.sensorId==3).value)
             this.conductivity_values.push(sensor_value.find(sensor=>sensor.sensorId==4).value)
         })
-        interface TickOptions {
-          precision?: number;
-        }
         new Chart(document.getElementById('temperature') as HTMLCanvasElement, {
             type: 'line',
             data: {
