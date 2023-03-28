@@ -62,7 +62,7 @@ export class PredictionsComponent implements OnInit{
         this.conductivity_values = [];
         //this.device_data = this.device_data.slice(6)
         this.device_data.map(data=>{
-            let date = moment(data["date"]).format('DD/MM/YYYY, HH:mm:ss');
+            let date = moment(data["date"]).format('DD/MM/YYYY, HH:mm');
             this.date_values.push(date);
             var sensor_value = data["SensorsValue"]
             this.temperature_values.push(sensor_value.find(sensor=>sensor.sensorId==1).value)
