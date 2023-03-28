@@ -96,7 +96,7 @@ export class ChartComponent implements OnInit{
                       tooltipFormat: 'DD/MM/YYYY, HH:mm'
                     }
                 }]
-              },
+              }
             }
           });
         new Chart(document.getElementById('ph') as HTMLCanvasElement, {
@@ -130,7 +130,15 @@ export class ChartComponent implements OnInit{
                       },
                       tooltipFormat: 'DD/MM/YYYY, HH:mm'
                         }
-                      }]
+                      }],
+                yAxes: [{
+                  ticks: {
+                    beginAtZero: true,
+                    callback: function(value, index, values) {
+                      return value.toFixed(2);
+                        }
+                      }
+                    }]
                     }
                   }
                 });
