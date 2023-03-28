@@ -117,18 +117,18 @@ export class ChartComponent implements OnInit{
             legend: { display: false },
             title: { display: false },
             scales: {
+              type: 'time',
+                time: {
+                  unit: 'second',
+                  displayFormats: {
+                    second: 'DD/MM/YYYY, HH:mm:ss'
+                  },
+                  tooltipFormat: 'DD/MM/YYYY, HH:mm:ss'
+                },
               xAxes: [{
                 ticks: {
                   //autoSkip: true,
                   maxTicksLimit: 5
-                },
-                type: 'time',
-                time: {
-                  unit: 'minute',
-                  displayFormats: {
-                    minute: 'DD/MM/YYYY, HH:mm'
-                  },
-                  tooltipFormat: 'DD/MM/YYYY, HH:mm'
                 }
               }]
             }
