@@ -5,6 +5,7 @@ COPY package.json package-lock.json ./
 RUN npm install
 COPY . .
 RUN npm run build --prod
+RUN npm install moment --save
 
 ### STAGE 2: Run ###
 FROM nginx:1.17.1-alpine
