@@ -100,40 +100,47 @@ export class ChartComponent implements OnInit{
             }
           });
         new Chart(document.getElementById('ph') as HTMLCanvasElement, {
-            type: 'line',
-            data: {
-              labels: this.date_values,
-              datasets: [
-                {
-                  label: 'pH',
-                  borderColor: ['green'],
-                  data: this.ph_values,
-                  fill: false
-                }
-              ]
-            },
-            options: {
-              responsive: true,
-              legend: { display: false },
-              title: {display: false},
-              scales: {
-                xAxes: [{
-                  ticks: {
-                    autoSkip: true,
-                    maxTicksLimit: 5
+          type: 'line',
+          data: {
+            labels: this.date_values,
+            datasets: [
+              {
+                label: 'pH',
+                borderColor: ['green'],
+                data: this.ph_values,
+                fill: false
+              }
+            ]
+          },
+          options: {
+            responsive: true,
+            legend: { display: false },
+            title: { display: false },
+            scales: {
+              xAxes: [{
+                ticks: {
+                  autoSkip: true,
+                  maxTicksLimit: 5
+                },
+                type: 'time',
+                time: {
+                  unit: 'minute',
+                  displayFormats: {
+                    minute: 'DD/MM/YYYY, HH:mm'
                   },
-                  type: 'time',
-                    time: {
-                      unit: 'minute',
-                      displayFormats: {
-                        minute: 'DD/MM/YYYY, HH:mm'
-                      },
-                      tooltipFormat: 'DD/MM/YYYY, HH:mm'
-                        }
-                      }]
-                    }
+                  tooltipFormat: 'DD/MM/YYYY, HH:mm'
+                }
+              }],
+              yAxes: [{
+                ticks: {
+                  callback: function (value, index, values) {
+                    return value.toFixed(2);
                   }
-                });
+                }
+              }]
+            }
+          }
+        });
         new Chart(document.getElementById('do') as HTMLCanvasElement, {
             type: 'line',
             data: {
