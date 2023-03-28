@@ -113,6 +113,11 @@ export class PredictionsComponent implements OnInit{
                             autoSkip: true,
                             maxTicksLimit: 5
                         }
+                    }],
+                    yAxes: [{
+                        ticks: {
+                            precision: 3
+                        }
                     }]
                 }
             }
