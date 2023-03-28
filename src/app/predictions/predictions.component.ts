@@ -114,9 +114,9 @@ export class PredictionsComponent implements OnInit{
                             maxTicksLimit: 5
                         }
                     }],
-                    yAxes: [{
+                     yAxes: [{
                         ticks: {
-                            precision: 3
+                            precision: 2
                         }
                     }]
                 }
