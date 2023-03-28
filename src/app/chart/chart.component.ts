@@ -3,6 +3,7 @@ import {Router} from '@angular/router';
 import { environment } from '../../environments/environment';
 import { HttpClient, HttpHeaders } from '@angular/common/http';
 import {Chart} from 'chart.js';
+import moment from 'moment';
 
 @Component({
     templateUrl: './chart.component.html',
@@ -56,17 +57,8 @@ export class ChartComponent implements OnInit{
         this.wcfi_values = [];
         this.device_data = this.device_data.slice(-40)
         this.device_data.map(data=>{
-            this.date_values.push(data["date"])
-            const localDate = new Date(this.date_values);
-            this.date_values = localDate.toLocaleString('en-GB', {
-              day: 'numeric',
-              month: 'numeric',
-              year: 'numeric',
-              hour: 'numeric',
-              minute: 'numeric',
-              second: 'numeric',
-              hour12: false
-            });
+            let date = moment(data["date"]).format('DD/MM/YYYY, HH:mm');
+            this.date_values.push(date);
             var sensor_value = data["SensorsValue"]
             this.temperature_values.push(sensor_value.find(sensor=>sensor.sensorId==1).value)
             this.ph_values.push(sensor_value.find(sensor=>sensor.sensorId==2).value)
