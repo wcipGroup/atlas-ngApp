@@ -16,7 +16,7 @@ export class NotificationComponent implements OnInit{
     nTotalDocuments = 0;
     notifications = [];
     displayedColumns = ['msgHeader', 'time']
-    nPerPage = 2;
+    nPerPage = 5;
     nOfPages = 0
     disableNext = false;
     disablePrevious = true;
